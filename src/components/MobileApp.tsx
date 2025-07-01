@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -256,6 +257,50 @@ const MobileApp = ({
               <p className="text-xs text-white font-medium">Personlig hjälp</p>
             </CardContent>
           </Card>
+        </div>
+      </div>
+
+      {/* How it Works Section - Mobile */}
+      <div className="px-4 pb-8">
+        <div className="max-w-sm mx-auto">
+          <h2 className="text-lg font-bold text-white text-center mb-6">
+            Så fungerar det – enkelt, snabbt och tryggt
+          </h2>
+          <div className="space-y-4">
+            <Card className="bg-white/10 backdrop-blur border-0">
+              <CardContent className="p-4 flex items-center">
+                <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center mr-3 flex-shrink-0 text-sm font-bold">
+                  1
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-white mb-1">Fyll i dina uppgifter</h3>
+                  <p className="text-xs text-blue-100">Namn, personnummer, inkomst etc.</p>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="bg-white/10 backdrop-blur border-0">
+              <CardContent className="p-4 flex items-center">
+                <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center mr-3 flex-shrink-0 text-sm font-bold">
+                  2
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-white mb-1">Få besked direkt</h3>
+                  <p className="text-xs text-blue-100">Inga register kontrolleras, bara baserat på dina siffror.</p>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="bg-white/10 backdrop-blur border-0">
+              <CardContent className="p-4 flex items-center">
+                <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center mr-3 flex-shrink-0 text-sm font-bold">
+                  3
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-white mb-1">Vi kontaktar dig</h3>
+                  <p className="text-xs text-blue-100">Om du vill gå vidare hjälper vi dig säkra lånet.</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
 
