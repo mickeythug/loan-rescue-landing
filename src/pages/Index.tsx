@@ -1,5 +1,6 @@
-
 import { useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import MobileApp from "@/components/MobileApp";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -12,6 +13,7 @@ import ContactSection from "@/components/ContactSection";
 import ProgressSteps from "@/components/ProgressSteps";
 
 const Index = () => {
+  const isMobile = useIsMobile();
   const [currentStep, setCurrentStep] = useState<"form" | "result" | "thanks">("form");
   const [loanAmount, setLoanAmount] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -29,6 +31,22 @@ const Index = () => {
   });
 
   const { errors, isValid, triggerValidation } = useSmartFormValidation(formData, formValidationRules);
+
+  // If mobile, render the mobile app
+  if (isMobile) {
+    return (
+      <MobileApp
+        currentStep={currentStep}
+        setCurrentStep={setCurrentStep}
+        loanAmount={loanAmount}
+        setLoanAmount={setLoanAmount}
+        isSubmitting={isSubmitting}
+        setIsSubmitting={setIsSubmitting}
+        isRejected={isRejected}
+        setIsRejected={setIsRejected}
+      />
+    );
+  }
 
   const formatPersonalNumber = (value: string) => {
     const digits = value.replace(/\D/g, '');
