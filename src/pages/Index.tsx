@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileApp from "@/components/MobileApp";
@@ -13,6 +14,7 @@ import ContactSection from "@/components/ContactSection";
 import ProgressSteps from "@/components/ProgressSteps";
 import BankSelector from "@/components/BankSelector";
 import BankIDLogin from "@/components/BankIDLogin";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -248,15 +250,15 @@ const Index = () => {
             {/* Navigation & Login */}
             <div className="flex items-center space-x-6">
               <nav className="hidden md:flex space-x-8">
-                <a href="#" className="text-gray-300 hover:text-blue-400 font-medium transition-colors duration-200">
+                <Link to="/" className="text-gray-300 hover:text-blue-400 font-medium transition-colors duration-200">
                   Hem
-                </a>
+                </Link>
                 <a href="#" className="text-gray-300 hover:text-blue-400 font-medium transition-colors duration-200">
                   Lån
                 </a>
-                <a href="#" className="text-gray-300 hover:text-blue-400 font-medium transition-colors duration-200">
+                <Link to="/om-oss" className="text-gray-300 hover:text-blue-400 font-medium transition-colors duration-200">
                   Om oss
-                </a>
+                </Link>
                 <a href="#" className="text-gray-300 hover:text-blue-400 font-medium transition-colors duration-200">
                   Kontakt
                 </a>
@@ -286,7 +288,7 @@ const Index = () => {
             size="lg"
             className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-lg font-semibold w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
           >
-            💰 FÅ DITT BEVILJADE LÅN NU
+            💰 Ta reda på hur mycket du kan låna NU.
           </Button>
         </div>
       </section>
@@ -553,7 +555,7 @@ const Index = () => {
                       BEARBETAR...
                     </>
                   ) : (
-                    "💰 FÅ DITT BEVILJADE LÅN NU"
+                    "💰 Ta reda på hur mycket du kan låna NU."
                   )}
                 </Button>
               </form>
