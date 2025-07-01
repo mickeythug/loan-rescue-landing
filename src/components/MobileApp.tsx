@@ -652,10 +652,8 @@ const MobileApp = ({
         </Card>
       </div>
 
-      {/* Contact Section with ID */}
-      <div id="contact-section">
-        <ContactSection />
-      </div>
+      {/* Contact Section */}
+      <ContactSection />
     </div>
   );
 };
