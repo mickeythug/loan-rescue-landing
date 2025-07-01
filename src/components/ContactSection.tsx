@@ -32,7 +32,7 @@ const ContactSection = () => {
                 <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
               <h3 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2 text-white">E-post</h3>
-              <p className="text-green-400 font-medium text-xs sm:text-sm break-all">info@privatlan.se</p>
+              <p className="text-green-400 font-medium text-xs sm:text-sm break-all">info@beviljad.se</p>
               <p className="text-slate-400 text-xs mt-1">Svar inom 2 timmar</p>
             </CardContent>
           </Card>
@@ -54,10 +54,16 @@ const ContactSection = () => {
                 <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
               <h3 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2 text-white">Adress</h3>
-              <p className="text-orange-400 font-medium text-xs sm:text-sm">Drottninggatan 1</p>
-              <p className="text-slate-400 text-xs mt-1">111 51 Stockholm</p>
+              <p className="text-orange-400 font-medium text-xs sm:text-sm">Sveavägen 9</p>
+              <p className="text-slate-400 text-xs">Hötorgsskrapa 3</p>
+              <p className="text-slate-400 text-xs mt-1">Stockholm, City</p>
             </CardContent>
           </Card>
+        </div>
+        
+        <div className="text-center mt-8">
+          <p className="text-lg font-semibold text-white">Beviljad</p>
+          <p className="text-sm text-slate-400">Din partner för privatlån</p>
         </div>
       </div>
     </section>
