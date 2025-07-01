@@ -40,19 +40,12 @@ All colors MUST be HSL.
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -105,84 +98,21 @@ All colors MUST be HSL.
   }
 }
 
-/* Custom animations - removed pulse and bounce animations */
-@layer utilities {
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-  @keyframes scale-in {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
 
-  @keyframes slide-in-from-top {
-    from {
-      opacity: 0;
-      transform: translateY(-30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+/* Focus states */
+.focus-ring {
+  transition: box-shadow 0.2s ease;
+}
 
-  @keyframes slide-in-from-bottom {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 0.6s ease-out;
-  }
-
-  .animate-scale-in {
-    animation: scale-in 0.4s ease-out;
-  }
-
-  .animate-slide-in-from-top {
-    animation: slide-in-from-top 0.8s ease-out;
-  }
-
-  .animate-slide-in-from-bottom {
-    animation: slide-in-from-bottom 0.8s ease-out;
-  }
-
-  /* Hover effects */
-  .hover-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .hover-lift:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  }
-
-  /* Focus states */
-  .focus-ring {
-    transition: box-shadow 0.2s ease;
-  }
-
-  .focus-ring:focus {
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
-  }
+.focus-ring:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
 }
