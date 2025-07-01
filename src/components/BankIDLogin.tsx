@@ -2,14 +2,21 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { CreditCard, Loader2, CheckCircle } from "lucide-react";
+import { CreditCard, Loader2, CheckCircle, Smartphone } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const BankIDLogin = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [personalNumber, setPersonalNumber] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
 
   const handleBankIDLogin = async () => {
+    if (!personalNumber.trim()) return;
+    
     setIsLoading(true);
     
     // Simulate BankID authentication process
@@ -22,7 +29,25 @@ const BankIDLogin = () => {
     setTimeout(() => {
       setIsOpen(false);
       setIsAuthenticated(false);
+      setPersonalNumber("");
     }, 2000);
+  };
+
+  const formatPersonalNumber = (value: string) => {
+    const digits = value.replace(/\D/g, '');
+    
+    if (digits.length >= 8) {
+      const birthDate = digits.substring(0, 8);
+      const lastFour = digits.substring(8, 12);
+      return `${birthDate}-${lastFour}`;
+    }
+    
+    return digits;
+  };
+
+  const handlePersonalNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPersonalNumber(e.target.value);
+    setPersonalNumber(formatted);
   };
 
   return (
@@ -30,69 +55,101 @@ const BankIDLogin = () => {
       <DialogTrigger asChild>
         <Button
           variant="outline"
-          className="flex items-center gap-2 bg-white hover:bg-gray-50 border-gray-300 text-gray-700 font-medium px-4 py-2 rounded-lg shadow-sm"
+          className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 border-0 text-white font-semibold px-6 py-2.5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
         >
           <CreditCard className="w-4 h-4" />
           Mina Sidor
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle className="text-center text-xl text-gray-900">
-            Logga in med BankID
+      <DialogContent className="sm:max-w-md bg-white border-0 shadow-2xl rounded-2xl">
+        <DialogHeader className="pb-6">
+          <DialogTitle className="text-center text-2xl font-bold text-gray-900 mb-2">
+            Logga in
           </DialogTitle>
+          <div className="flex justify-center">
+            <div className="bg-gray-100 rounded-full p-1">
+              <div className="bg-teal-600 text-white px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium">
+                <Smartphone className="w-4 h-4" />
+                Mobilt BankID
+              </div>
+            </div>
+          </div>
         </DialogHeader>
-        <div className="flex flex-col items-center justify-center py-8 space-y-6">
+        
+        <div className="flex flex-col space-y-6 py-4">
           {!isLoading && !isAuthenticated && (
             <>
-              <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center">
-                <CreditCard className="w-10 h-10 text-blue-600" />
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="personalNumber" className="text-sm font-medium text-gray-700 mb-2 block">
+                    Personnummer
+                  </Label>
+                  <Input
+                    id="personalNumber"
+                    type="text"
+                    placeholder="YYYYMMDD-XXXX"
+                    value={personalNumber}
+                    onChange={handlePersonalNumberChange}
+                    className="h-12 text-base border-2 border-gray-200 rounded-lg focus:border-teal-600 focus:ring-2 focus:ring-teal-200 transition-all duration-200"
+                    maxLength={13}
+                  />
+                </div>
+                
+                <div className="flex items-center space-x-2">
+                  <Checkbox 
+                    id="remember" 
+                    checked={rememberMe}
+                    onCheckedChange={(checked) => setRememberMe(checked as boolean)}
+                    className="border-2 border-gray-300 data-[state=checked]:bg-teal-600 data-[state=checked]:border-teal-600"
+                  />
+                  <Label htmlFor="remember" className="text-sm text-gray-600">
+                    Kom ihåg mitt personnummer på den här datorn.
+                  </Label>
+                </div>
               </div>
-              <div className="text-center space-y-2">
-                <p className="text-gray-700 font-medium">
-                  Klicka på knappen nedan för att logga in med BankID
-                </p>
-                <p className="text-sm text-gray-500">
-                  Du kommer att omdirigeras till din BankID-app
-                </p>
-              </div>
+              
               <Button
                 onClick={handleBankIDLogin}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 font-semibold"
+                disabled={!personalNumber.trim()}
+                className="w-full bg-teal-600 hover:bg-teal-700 text-white py-3 font-semibold text-base rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Logga in med BankID
+                Logga in med Mobilt BankID
               </Button>
             </>
           )}
           
           {isLoading && (
             <>
-              <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center">
-                <Loader2 className="w-10 h-10 text-blue-600 animate-spin" />
-              </div>
-              <div className="text-center space-y-2">
-                <p className="text-gray-700 font-medium">
-                  Väntar på BankID...
-                </p>
-                <p className="text-sm text-gray-500">
-                  Öppna din BankID-app och följ instruktionerna
-                </p>
+              <div className="flex flex-col items-center space-y-4 py-8">
+                <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center">
+                  <Loader2 className="w-8 h-8 text-teal-600 animate-spin" />
+                </div>
+                <div className="text-center space-y-2">
+                  <p className="text-gray-900 font-semibold">
+                    Väntar på BankID...
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Öppna din BankID-app och följ instruktionerna
+                  </p>
+                </div>
               </div>
             </>
           )}
           
           {isAuthenticated && (
             <>
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
-                <CheckCircle className="w-10 h-10 text-green-600" />
-              </div>
-              <div className="text-center space-y-2">
-                <p className="text-green-700 font-medium">
-                  Inloggning lyckades!
-                </p>
-                <p className="text-sm text-gray-500">
-                  Du omdirigeras nu till Mina Sidor...
-                </p>
+              <div className="flex flex-col items-center space-y-4 py-8">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                  <CheckCircle className="w-8 h-8 text-green-600" />
+                </div>
+                <div className="text-center space-y-2">
+                  <p className="text-green-700 font-semibold">
+                    Inloggning lyckades!
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Du omdirigeras nu till Mina Sidor...
+                  </p>
+                </div>
               </div>
             </>
           )}

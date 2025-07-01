@@ -234,17 +234,46 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
-      {/* Top Navigation Bar with BankID Login */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 px-4 py-3">
-        <div className="flex justify-between items-center max-w-7xl mx-auto">
-          <BankIDLogin />
-          <div className="text-sm text-gray-500">
-            Säker hantering enligt GDPR
+      {/* Premium Modern Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo/Brand */}
+            <div className="flex items-center">
+              <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+                LoanDirect
+              </div>
+            </div>
+            
+            {/* Navigation & Login */}
+            <div className="flex items-center space-x-6">
+              <nav className="hidden md:flex space-x-8">
+                <a href="#" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">
+                  Hem
+                </a>
+                <a href="#" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">
+                  Lån
+                </a>
+                <a href="#" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">
+                  Om oss
+                </a>
+                <a href="#" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">
+                  Kontakt
+                </a>
+              </nav>
+              
+              <div className="flex items-center space-x-3">
+                <div className="hidden sm:block text-xs text-gray-500 font-medium">
+                  Säker hantering enligt GDPR
+                </div>
+                <BankIDLogin />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Hero Section - adjusted for top navigation */}
+      {/* Hero Section - adjusted for modern header */}
       <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center text-white px-3 sm:px-4 lg:px-6 pt-16">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto w-full">
@@ -253,7 +282,7 @@ const Index = () => {
           </h1>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto px-2">
             💰 Privatlån • Billån • Bolån - Snabbt och enkelt!
-            <span className="block mt-2"> ✅ Direktsvar utan krångel • ⚡ Klart på 2 minuter</span>
+            <span className="block mt-2"> ✅ Direktsvar utan UC-kontroll • ⚡ Klart på 2 minuter</span>
           </p>
           <Button 
             onClick={scrollToForm}
