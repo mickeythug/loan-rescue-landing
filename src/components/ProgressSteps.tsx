@@ -17,11 +17,11 @@ const ProgressSteps = ({ currentStep }: ProgressStepsProps) => {
       <div className="flex items-center justify-between">
         {steps.map((step, index) => (
           <div key={step.id} className="flex items-center">
-            <div className={`flex items-center justify-center w-8 h-8 rounded-full transition-all duration-300 ${
+            <div className={`flex items-center justify-center w-8 h-8 rounded-full ${
               step.completed 
                 ? "bg-green-600 text-white" 
                 : currentStep === step.id 
-                  ? "bg-blue-600 text-white animate-pulse" 
+                  ? "bg-blue-600 text-white" 
                   : "bg-gray-300 text-gray-600"
             }`}>
               {step.completed ? (
@@ -36,7 +36,7 @@ const ProgressSteps = ({ currentStep }: ProgressStepsProps) => {
               {step.label}
             </span>
             {index < steps.length - 1 && (
-              <div className={`mx-4 h-0.5 w-8 transition-all duration-300 ${
+              <div className={`mx-4 h-0.5 w-8 ${
                 step.completed ? "bg-green-600" : "bg-gray-300"
               }`}></div>
             )}
