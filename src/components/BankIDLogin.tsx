@@ -6,16 +6,18 @@ import { CreditCard, Loader2, CheckCircle, Smartphone } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import BankSelector from "./BankSelector";
 
 const BankIDLogin = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [personalNumber, setPersonalNumber] = useState("");
+  const [selectedBank, setSelectedBank] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleBankIDLogin = async () => {
-    if (!personalNumber.trim()) return;
+    if (!personalNumber.trim() || !selectedBank.trim()) return;
     
     setIsLoading(true);
     
@@ -30,6 +32,7 @@ const BankIDLogin = () => {
       setIsOpen(false);
       setIsAuthenticated(false);
       setPersonalNumber("");
+      setSelectedBank("");
     }, 2000);
   };
 
@@ -49,6 +52,8 @@ const BankIDLogin = () => {
     const formatted = formatPersonalNumber(e.target.value);
     setPersonalNumber(formatted);
   };
+
+  const isFormValid = personalNumber.trim() && selectedBank.trim();
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -80,6 +85,11 @@ const BankIDLogin = () => {
           {!isLoading && !isAuthenticated && (
             <>
               <div className="space-y-4">
+                <BankSelector
+                  value={selectedBank}
+                  onChange={setSelectedBank}
+                />
+                
                 <div>
                   <Label htmlFor="personalNumber" className="text-sm font-medium text-gray-700 mb-2 block">
                     Personnummer
@@ -110,7 +120,7 @@ const BankIDLogin = () => {
               
               <Button
                 onClick={handleBankIDLogin}
-                disabled={!personalNumber.trim()}
+                disabled={!isFormValid}
                 className="w-full bg-teal-600 hover:bg-teal-700 text-white py-3 font-semibold text-base rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Logga in med Mobilt BankID
