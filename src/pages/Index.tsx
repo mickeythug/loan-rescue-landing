@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -121,12 +120,6 @@ const Index = () => {
                 <p className="text-base sm:text-lg text-slate-600 mb-4 sm:mb-6 px-2 leading-relaxed">
                   På grund av befintliga skulder hos Kronofogden kan vi tyvärr inte erbjuda dig ett lån för tillfället.<br className="hidden sm:block" />
                   <span className="block sm:inline"> Vi rekommenderar att du kontaktar en skuldrådgivare för hjälp.</span>
-                </p>
-              </div>
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 sm:p-4">
-                <p className="text-blue-800 font-medium text-sm sm:text-base leading-relaxed">
-                  📞 Gratis skuldrådgivning: 0200-22 22 22<br />
-                  💬 Eller chatta med oss för mer information
                 </p>
               </div>
             </CardContent>
