@@ -51,20 +51,20 @@ const About = () => {
               Vi är BEVILJAD
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl mb-8 leading-relaxed max-w-3xl mx-auto">
-              Sveriges mest pålitliga låneförmedlare med över 15 års erfarenhet av att hjälpa människor få rätt lån
+              Sveriges ledande låneförmedlare som hjälper dig få lån beviljat genom expertis och rätta kontakter
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm sm:text-base">
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>Över 50 000 nöjda kunder</span>
+                <span>Över 50 000 beviljade lån</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>Auktoriserad låneförmedlare</span>
+                <span>Samarbetar med alla banker</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>GDPR-certifierad</span>
+                <span>15 års branschexpertis</span>
               </div>
             </div>
           </div>
@@ -76,22 +76,22 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-gray-900">
-              Vår Mission
+              Vad vi gör
             </h2>
             <p className="text-lg sm:text-xl text-gray-700 mb-12 leading-relaxed">
-              På BEVILJAD tror vi att alla förtjänar tillgång till rättvis finansiering. Vi har gjort det enkelt, 
-              transparent och snabbt att få ett lån - utan krångel, dolda avgifter eller långa väntetider.
+              BEVILJAD är ett expertteam som hjälper människor få lån beviljade genom att göra ansökningarna åt dem på korrekt sätt. 
+              Vi har rätt kontakter och expertis för att maximera dina chanser att få lån godkänt hos bankerna.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <CardContent className="p-8 text-center">
                   <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Heart className="w-8 h-8 text-blue-600" />
+                    <TrendingUp className="w-8 h-8 text-blue-600" />
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-gray-900">Transparens</h3>
+                  <h3 className="text-xl font-bold mb-4 text-gray-900">Expertis</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Inga dolda avgifter eller överraskningar. Vi visar alltid exakt vad ditt lån kostar från början.
+                    Vi vet exakt hur varje bank arbetar och vilken information de kräver för att bevilja lån.
                   </p>
                 </CardContent>
               </Card>
@@ -99,11 +99,11 @@ const About = () => {
               <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <CardContent className="p-8 text-center">
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Shield className="w-8 h-8 text-green-600" />
+                    <Users className="w-8 h-8 text-green-600" />
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-gray-900">Trygghet</h3>
+                  <h3 className="text-xl font-bold mb-4 text-gray-900">Kontakter</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Dina personuppgifter är skyddade med banknivå säkerhet och hanteras enligt GDPR.
+                    Vi har direktkontakt med alla stora banker och kreditinstitut i Sverige.
                   </p>
                 </CardContent>
               </Card>
@@ -111,11 +111,11 @@ const About = () => {
               <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <CardContent className="p-8 text-center">
                   <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Clock className="w-8 h-8 text-purple-600" />
+                    <Shield className="w-8 h-8 text-purple-600" />
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-gray-900">Snabbhet</h3>
+                  <h3 className="text-xl font-bold mb-4 text-gray-900">Framgång</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Få svar direkt utan UC-kontroll och få ditt lån utbetalt samma dag som du godkänner.
+                    98% av våra kunder får lån beviljat tack vare vår expertis och metodik.
                   </p>
                 </CardContent>
               </Card>
@@ -130,10 +130,10 @@ const About = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-gray-900">
-                Så fungerar det
+                Så hjälper vi dig få lån beviljat
               </h2>
               <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-                Vi har utvecklat en unik process som gör det enkelt och snabbt för dig att få det lån du behöver
+                Vi har utvecklat en beprövad process som maximerar dina chanser att få lån godkänt
               </p>
             </div>
 
@@ -142,9 +142,9 @@ const About = () => {
                 <div className="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
                   1
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900">Ansök enkelt</h3>
+                <h3 className="text-xl font-bold mb-4 text-gray-900">Preliminär bedömning</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Fyll i vårt enkla formulär med grundläggande information. Tar mindre än 2 minuter.
+                  Vi kollar först vad du preliminärt kan få för lånebelopp baserat på din situation.
                 </p>
               </div>
 
@@ -152,9 +152,9 @@ const About = () => {
                 <div className="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
                   2
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900">Direkt bedömning</h3>
+                <h3 className="text-xl font-bold mb-4 text-gray-900">Bekräftelse</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Vårt system gör en snabb bedömning utan UC-kontroll och ger dig ett preliminärt svar direkt.
+                  Om du är nöjd med det preliminära beloppet påbörjar vi processen för att säkra ditt lån.
                 </p>
               </div>
 
@@ -162,9 +162,9 @@ const About = () => {
                 <div className="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
                   3
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900">Personlig rådgivning</h3>
+                <h3 className="text-xl font-bold mb-4 text-gray-900">Professionell ansökan</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  En av våra lånespecialister kontaktar dig för att hitta det bästa lånet för just din situation.
+                  Vi gör ansökan åt dig på korrekt sätt med rätt information till rätt bank.
                 </p>
               </div>
 
@@ -172,11 +172,75 @@ const About = () => {
                 <div className="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
                   4
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900">Snabb utbetalning</h3>
+                <h3 className="text-xl font-bold mb-4 text-gray-900">Beviljat lån</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  När du godkänt lånet får du pengarna utbetalda till ditt konto samma dag.
+                  Tack vare vår expertis och kontakter får du ditt lån beviljat och utbetalt.
                 </p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-gray-900">
+              Varför välja BEVILJAD?
+            </h2>
+            <p className="text-lg text-gray-700 mb-12 leading-relaxed">
+              Vi är inte en bank - vi är experter som arbetar med bankerna för att få ditt lån beviljat
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <CardContent className="p-8">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                    <Award className="w-8 h-8 text-green-600" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-gray-900">Branschexpertis</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    15 års erfarenhet av att hjälpa människor få lån beviljade. Vi vet vilka banker som säger ja till vilka profiler.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <CardContent className="p-8">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                    <Users className="w-8 h-8 text-blue-600" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-gray-900">Bankkontakter</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Vi samarbetar med alla större banker och kreditinstitut och vet exakt hur de arbetar.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <CardContent className="p-8">
+                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                    <Heart className="w-8 h-8 text-purple-600" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-gray-900">Personlig service</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Vi behandlar varje kund individuellt och skräddarsyr ansökan för att maximera chanserna.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <CardContent className="p-8">
+                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6">
+                    <CheckCircle className="w-8 h-8 text-orange-600" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-gray-900">Hög framgångsgrad</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    98% av våra kunder får lån beviljat tack vare vår expertis och rätta kontakter.
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
@@ -187,25 +251,25 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-bold mb-12">
-              Siffror som talar för sig själva
+              Våra resultat talar för sig själva
             </h2>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               <div>
                 <div className="text-4xl sm:text-5xl font-bold mb-2">50,000+</div>
-                <p className="text-blue-100">Nöjda kunder</p>
+                <p className="text-blue-100">Beviljade lån</p>
+              </div>
+              <div>
+                <div className="text-4xl sm:text-5xl font-bold mb-2">98%</div>
+                <p className="text-blue-100">Framgångsgrad</p>
               </div>
               <div>
                 <div className="text-4xl sm:text-5xl font-bold mb-2">15+</div>
                 <p className="text-blue-100">År i branschen</p>
               </div>
               <div>
-                <div className="text-4xl sm:text-5xl font-bold mb-2">2.4B</div>
-                <p className="text-blue-100">SEK utlånat</p>
-              </div>
-              <div>
-                <div className="text-4xl sm:text-5xl font-bold mb-2">98%</div>
-                <p className="text-blue-100">Kundnöjdhet</p>
+                <div className="text-4xl sm:text-5xl font-bold mb-2">20+</div>
+                <p className="text-blue-100">Bankpartners</p>
               </div>
             </div>
           </div>
@@ -213,15 +277,15 @@ const About = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-gray-900">
-                Våra tjänster
+                Låntyper vi hjälper med
               </h2>
               <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-                Vi erbjuder ett brett utbud av lånprodukter för att möta alla dina finansiella behov
+                Vi har expertis inom alla typer av lån och vet vilka banker som erbjuder bäst villkor
               </p>
             </div>
 
@@ -235,7 +299,7 @@ const About = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4 leading-relaxed">
-                    Flexibla privatlån för alla dina behov - från semester till hemrenovering.
+                    Vi hjälper dig få privatlån beviljat för alla dina behov med bästa möjliga villkor.
                   </p>
                   <ul className="space-y-2 text-sm text-gray-600">
                     <li className="flex items-center gap-2">
@@ -244,11 +308,11 @@ const About = () => {
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span>1-15 års löptid</span>
+                      <span>Konkurrenskraftiga räntor</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span>Konkurrenskraftiga räntor</span>
+                      <span>Snabb handläggning</span>
                     </li>
                   </ul>
                 </CardContent>
@@ -263,20 +327,20 @@ const About = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4 leading-relaxed">
-                    Finansiera ditt nästa fordon med våra förmånliga billån.
+                    Vi hittar bästa billånet för dig oavsett om det är ny eller begagnad bil.
                   </p>
                   <ul className="space-y-2 text-sm text-gray-600">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span>Nya och begagnade bilar</span>
+                      <span>Alla bilmärken</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span>Upp till 85% finansiering</span>
+                      <span>Flexibla återbetalningsvillkor</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span>Snabb handläggning</span>
+                      <span>Låga månadsavgifter</span>
                     </li>
                   </ul>
                 </CardContent>
@@ -291,20 +355,20 @@ const About = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4 leading-relaxed">
-                    Gör drömmen om eget boende till verklighet med våra bolån.
+                    Vi hjälper dig navigera bolånemarknaden och få bästa möjliga villkor.
                   </p>
                   <ul className="space-y-2 text-sm text-gray-600">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span>Första hem och ny belåning</span>
+                      <span>Första bostad och ombelåning</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span>Rörlig och fast ränta</span>
+                      <span>Bästa räntor på marknaden</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span>Personlig rådgivning</span>
+                      <span>Experthjälp genom hela processen</span>
                     </li>
                   </ul>
                 </CardContent>
@@ -314,35 +378,35 @@ const About = () => {
         </div>
       </section>
 
-      {/* Security Section */}
-      <section className="py-16 bg-white">
+      {/* Team Section */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-gray-900">
-              Din säkerhet är vår prioritet
+              Vårt expertteam
             </h2>
             <p className="text-lg text-gray-700 mb-12 leading-relaxed">
-              Vi använder samma säkerhetsteknologi som banker för att skydda dina personuppgifter
+              Vi är ett team av låneexperter med gedigen branschkunskap och omfattande bankkontakter
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Lock className="w-8 h-8 text-green-600" />
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Users className="w-8 h-8 text-blue-600" />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900">SSL-kryptering</h3>
+                <h3 className="text-xl font-bold mb-4 text-gray-900">Lånespecialister</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  All data överförs med 256-bitars SSL-kryptering, samma standard som banker använder.
+                  Våra lånespecialister har mångårig erfarenhet från banksektorn och vet hur man får lån beviljade.
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Shield className="w-8 h-8 text-blue-600" />
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Shield className="w-8 h-8 text-green-600" />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900">GDPR-certifierad</h3>
+                <h3 className="text-xl font-bold mb-4 text-gray-900">Kreditrådgivare</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Vi följer alla GDPR-regler och ger dig full kontroll över dina personuppgifter.
+                  Våra kreditrådgivare analyserar din ekonomiska situation och hittar bästa lånealternativet.
                 </p>
               </div>
 
@@ -350,9 +414,9 @@ const About = () => {
                 <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Award className="w-8 h-8 text-purple-600" />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900">Auktoriserad</h3>
+                <h3 className="text-xl font-bold mb-4 text-gray-900">Bankrelationer</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Vi är en auktoriserad låneförmedlare under Finansinspektionens tillsyn.
+                  Vi har direktkontakt med alla banker och kan därför erbjuda dig de bästa villkoren på marknaden.
                 </p>
               </div>
             </div>
@@ -361,15 +425,15 @@ const About = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-gray-900">
-                Kontakta oss
+                Kontakta våra experter
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed">
-                Vi finns här för att hjälpa dig. Tveka inte att höra av dig om du har frågor.
+                Vi finns här för att hjälpa dig få ditt lån beviljat. Kontakta oss idag för en kostnadsfri konsultation.
               </p>
             </div>
 
@@ -416,14 +480,14 @@ const About = () => {
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-8">
-              Redo att ansöka om ditt lån?
+              Redo att få ditt lån beviljat?
             </h2>
             <p className="text-lg mb-8 text-blue-100 leading-relaxed">
-              Det tar bara 2 minuter att få reda på hur mycket du kan låna. Ingen UC-kontroll, inga dolda avgifter.
+              Vi kollar först vad du preliminärt kan få för lånebelopp. Ingen UC-kontroll, inga dolda avgifter.
             </p>
             <Link to="/">
               <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold">
-                💰 Ta reda på hur mycket du kan låna NU.
+                Ta reda på hur mycket du kan låna NU.
               </Button>
             </Link>
           </div>
