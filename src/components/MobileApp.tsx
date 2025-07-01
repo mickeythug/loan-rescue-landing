@@ -1,11 +1,10 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { CheckCircle, Shield, Clock, Users, Loader2, AlertCircle, XCircle, ArrowRight, Star, Zap } from "lucide-react";
+import { CheckCircle, Shield, Clock, Users, Loader2, AlertCircle, XCircle, ArrowRight, Star, Zap, ArrowLeft } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useSmartFormValidation, formValidationRules } from "@/hooks/useSmartFormValidation";
 import ContactSection from "@/components/ContactSection";
@@ -39,10 +38,19 @@ const MobileApp = ({
     email: "",
     phone: "",
     income: "",
-    hasDebts: ""
+    hasDebts: "",
+    referralId: ""
   });
 
   const { errors, isValid, triggerValidation } = useSmartFormValidation(formData, formValidationRules);
+
+  const handleBack = () => {
+    if (currentStep === "result") {
+      setCurrentStep("form");
+    } else if (currentStep === "thanks") {
+      setCurrentStep("result");
+    }
+  };
 
   const formatPersonalNumber = (value: string) => {
     const digits = value.replace(/\D/g, '');
@@ -117,6 +125,17 @@ const MobileApp = ({
             <div className="max-w-sm mx-auto pt-8">
               <Card className="shadow-xl border-0 bg-white/95 backdrop-blur">
                 <CardContent className="p-6 text-center">
+                  <div className="mb-4">
+                    <Button
+                      onClick={handleBack}
+                      variant="outline"
+                      size="sm"
+                      className="flex items-center text-sm mb-4"
+                    >
+                      <ArrowLeft className="w-4 h-4 mr-2" />
+                      Tillbaka
+                    </Button>
+                  </div>
                   <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <XCircle className="w-8 h-8 text-red-600" />
                   </div>
@@ -146,6 +165,17 @@ const MobileApp = ({
           <div className="max-w-sm mx-auto pt-8">
             <Card className="shadow-xl border-0 bg-white/95 backdrop-blur">
               <CardContent className="p-6 text-center">
+                <div className="mb-4">
+                  <Button
+                    onClick={handleBack}
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center text-sm mb-4"
+                  >
+                    <ArrowLeft className="w-4 h-4 mr-2" />
+                    Tillbaka
+                  </Button>
+                </div>
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="w-8 h-8 text-green-600" />
                 </div>
@@ -181,6 +211,17 @@ const MobileApp = ({
           <div className="max-w-sm mx-auto pt-8">
             <Card className="shadow-xl border-0 bg-white/95 backdrop-blur">
               <CardContent className="p-6 text-center">
+                <div className="mb-4">
+                  <Button
+                    onClick={handleBack}
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center text-sm mb-4"
+                  >
+                    <ArrowLeft className="w-4 h-4 mr-2" />
+                    Tillbaka
+                  </Button>
+                </div>
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Users className="w-8 h-8 text-blue-600" />
                 </div>
@@ -454,6 +495,22 @@ const MobileApp = ({
                     <Label htmlFor="debts-no" className="text-sm">Nej</Label>
                   </div>
                 </RadioGroup>
+              </div>
+
+              <div>
+                <Label htmlFor="referralId" className="text-xs font-medium text-gray-700">
+                  Referral ID (frivilligt)
+                </Label>
+                <Input
+                  id="referralId"
+                  placeholder="Ange referral ID om du har ett"
+                  value={formData.referralId}
+                  onChange={(e) => setFormData({...formData, referralId: e.target.value})}
+                  className="mt-1 h-10 text-sm rounded-lg border-gray-300"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Om någon rekommenderat dig, ange deras referral ID här
+                </p>
               </div>
 
               <div className="bg-green-50 border border-green-200 rounded-lg p-3">

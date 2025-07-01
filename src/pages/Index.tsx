@@ -27,10 +27,19 @@ const Index = () => {
     email: "",
     phone: "",
     income: "",
-    hasDebts: ""
+    hasDebts: "",
+    referralId: ""
   });
 
   const { errors, isValid, triggerValidation } = useSmartFormValidation(formData, formValidationRules);
+
+  const handleBack = () => {
+    if (currentStep === "result") {
+      setCurrentStep("form");
+    } else if (currentStep === "thanks") {
+      setCurrentStep("result");
+    }
+  };
 
   // If mobile, render the mobile app
   if (isMobile) {
@@ -125,7 +134,7 @@ const Index = () => {
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-red-900 to-slate-900 flex items-center justify-center p-3 sm:p-4 lg:p-6">
           <Card className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl shadow-2xl mx-3">
             <CardContent className="p-4 sm:p-6 md:p-8 text-center">
-              <ProgressSteps currentStep={currentStep} />
+              <ProgressSteps currentStep={currentStep} onBack={handleBack} />
               <div className="mb-4 sm:mb-6">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
                   <XCircle className="w-6 h-6 sm:w-8 sm:h-8 text-red-600" />
@@ -148,7 +157,7 @@ const Index = () => {
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center p-3 sm:p-4 lg:p-6">
         <Card className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl shadow-2xl mx-3">
           <CardContent className="p-4 sm:p-6 md:p-8 text-center">
-            <ProgressSteps currentStep={currentStep} />
+            <ProgressSteps currentStep={currentStep} onBack={handleBack} />
             <div className="mb-4 sm:mb-6">
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
                 <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" />
@@ -182,7 +191,7 @@ const Index = () => {
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center p-3 sm:p-4 lg:p-6">
         <Card className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl shadow-2xl mx-3">
           <CardContent className="p-4 sm:p-6 md:p-8 text-center">
-            <ProgressSteps currentStep={currentStep} />
+            <ProgressSteps currentStep={currentStep} onBack={handleBack} />
             <div className="mb-4 sm:mb-6">
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
                 <Users className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600" />
@@ -309,7 +318,7 @@ const Index = () => {
         <div className="container mx-auto px-3 sm:px-4 lg:px-6">
           <Card className="max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto shadow-xl">
             <CardContent className="p-4 sm:p-6 md:p-8">
-              <ProgressSteps currentStep={currentStep} />
+              <ProgressSteps currentStep={currentStep} onBack={handleBack} />
               <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-4 sm:mb-6 leading-tight px-2">
                 Få ditt preliminära lånebesked
               </h2>
@@ -450,6 +459,22 @@ const Index = () => {
                       <Label htmlFor="debts-no" className="text-sm">Nej</Label>
                     </div>
                   </RadioGroup>
+                </div>
+
+                <div>
+                  <Label htmlFor="referralId" className="text-sm font-medium">
+                    Referral ID (frivilligt)
+                  </Label>
+                  <Input
+                    id="referralId"
+                    placeholder="Ange referral ID om du har ett"
+                    value={formData.referralId}
+                    onChange={(e) => setFormData({...formData, referralId: e.target.value})}
+                    className="mt-1 h-10 text-sm border-gray-300"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">
+                    Om någon rekommenderat dig, ange deras referral ID här
+                  </p>
                 </div>
 
                 <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-xs sm:text-sm text-green-800">

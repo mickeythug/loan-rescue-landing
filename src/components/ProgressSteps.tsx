@@ -1,19 +1,36 @@
 
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface ProgressStepsProps {
   currentStep: "form" | "result" | "thanks";
+  onBack?: () => void;
 }
 
-const ProgressSteps = ({ currentStep }: ProgressStepsProps) => {
+const ProgressSteps = ({ currentStep, onBack }: ProgressStepsProps) => {
   const steps = [
     { id: "form", label: "Fyll i uppgifter", completed: currentStep !== "form" },
     { id: "result", label: "Få besked", completed: currentStep === "thanks" },
     { id: "thanks", label: "Klar", completed: currentStep === "thanks" }
   ];
 
+  const showBackButton = currentStep !== "form";
+
   return (
     <div className="w-full max-w-md mx-auto mb-8">
+      {showBackButton && onBack && (
+        <div className="mb-4">
+          <Button
+            onClick={onBack}
+            variant="outline"
+            size="sm"
+            className="flex items-center text-sm"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Tillbaka
+          </Button>
+        </div>
+      )}
       <div className="flex items-center justify-between">
         {steps.map((step, index) => (
           <div key={step.id} className="flex items-center">
