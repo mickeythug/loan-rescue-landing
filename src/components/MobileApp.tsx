@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,6 +7,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { CheckCircle, Shield, Clock, Users, Loader2, AlertCircle, XCircle, ArrowRight, Star, Zap } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useSmartFormValidation, formValidationRules } from "@/hooks/useSmartFormValidation";
+import ContactSection from "@/components/ContactSection";
 
 interface MobileAppProps {
   currentStep: "form" | "result" | "thanks";
@@ -111,96 +111,105 @@ const MobileApp = ({
   if (currentStep === "result") {
     if (isRejected) {
       return (
-        <div className="min-h-screen bg-gradient-to-br from-red-50 to-red-100 p-4">
-          <div className="max-w-sm mx-auto pt-8">
-            <Card className="shadow-xl border-0 bg-white/95 backdrop-blur">
-              <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <XCircle className="w-8 h-8 text-red-600" />
-                </div>
-                <h1 className="text-xl font-bold text-gray-900 mb-3">
-                  Tyvärr kan vi inte hjälpa dig
-                </h1>
-                <p className="text-sm text-gray-600 mb-6 leading-relaxed">
-                  På grund av befintliga skulder kan vi tyvärr inte erbjuda dig ett lån för tillfället.
-                </p>
-                <div className="bg-blue-50 rounded-lg p-4 mb-4">
-                  <p className="text-xs text-blue-800">
-                    Vi rekommenderar att du kontaktar en skuldrådgivare för hjälp.
+        <div className="min-h-screen bg-gradient-to-br from-red-50 to-red-100">
+          <div className="p-4">
+            <div className="max-w-sm mx-auto pt-8">
+              <Card className="shadow-xl border-0 bg-white/95 backdrop-blur">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <XCircle className="w-8 h-8 text-red-600" />
+                  </div>
+                  <h1 className="text-xl font-bold text-gray-900 mb-3">
+                    Tyvärr kan vi inte hjälpa dig
+                  </h1>
+                  <p className="text-sm text-gray-600 mb-6 leading-relaxed">
+                    På grund av befintliga skulder kan vi tyvärr inte erbjuda dig ett lån för tillfället.
                   </p>
-                </div>
-              </CardContent>
-            </Card>
+                  <div className="bg-blue-50 rounded-lg p-4 mb-4">
+                    <p className="text-xs text-blue-800">
+                      Vi rekommenderar att du kontaktar en skuldrådgivare för hjälp.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
+          <ContactSection />
         </div>
       );
     }
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 p-4">
-        <div className="max-w-sm mx-auto pt-8">
-          <Card className="shadow-xl border-0 bg-white/95 backdrop-blur">
-            <CardContent className="p-6 text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8 text-green-600" />
-              </div>
-              <h1 className="text-xl font-bold text-gray-900 mb-2">
-                Grattis! Du kan få:
-              </h1>
-              <div className="text-3xl font-bold text-green-600 mb-4">
-                {loanAmount.toLocaleString('sv-SE')} kr
-              </div>
-              <p className="text-sm text-gray-600 mb-6 leading-relaxed">
-                Detta är en uppskattning baserad på dina uppgifter. Vill du gå vidare?
-              </p>
-              <Button 
-                onClick={handleContinue}
-                className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-semibold"
-              >
-                JA – JAG VILL GÅ VIDARE
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </CardContent>
-          </Card>
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
+        <div className="p-4">
+          <div className="max-w-sm mx-auto pt-8">
+            <Card className="shadow-xl border-0 bg-white/95 backdrop-blur">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="w-8 h-8 text-green-600" />
+                </div>
+                <h1 className="text-xl font-bold text-gray-900 mb-2">
+                  Grattis! Du kan få:
+                </h1>
+                <div className="text-3xl font-bold text-green-600 mb-4">
+                  {loanAmount.toLocaleString('sv-SE')} kr
+                </div>
+                <p className="text-sm text-gray-600 mb-6 leading-relaxed">
+                  Detta är en uppskattning baserad på dina uppgifter. Vill du gå vidare?
+                </p>
+                <Button 
+                  onClick={handleContinue}
+                  className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-semibold"
+                >
+                  JA – JAG VILL GÅ VIDARE
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
         </div>
+        <ContactSection />
       </div>
     );
   }
 
   if (currentStep === "thanks") {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-        <div className="max-w-sm mx-auto pt-8">
-          <Card className="shadow-xl border-0 bg-white/95 backdrop-blur">
-            <CardContent className="p-6 text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-blue-600" />
-              </div>
-              <h1 className="text-xl font-bold text-gray-900 mb-3">
-                Tack för din förfrågan!
-              </h1>
-              <p className="text-sm text-gray-600 mb-6 leading-relaxed">
-                En av våra lånespecialister kontaktar dig inom kort.
-              </p>
-              <div className="bg-green-50 border border-green-200 rounded-xl p-4">
-                <div className="space-y-2 text-xs text-green-800">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-3 h-3 mr-2" />
-                    <span>Din förfrågan är mottagen</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-3 h-3 mr-2" />
-                    <span>Kontakt inom 24 timmar</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-3 h-3 mr-2" />
-                    <span>Helt utan kostnad</span>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div className="p-4">
+          <div className="max-w-sm mx-auto pt-8">
+            <Card className="shadow-xl border-0 bg-white/95 backdrop-blur">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-8 h-8 text-blue-600" />
+                </div>
+                <h1 className="text-xl font-bold text-gray-900 mb-3">
+                  Tack för din förfrågan!
+                </h1>
+                <p className="text-sm text-gray-600 mb-6 leading-relaxed">
+                  En av våra lånespecialister kontaktar dig inom kort.
+                </p>
+                <div className="bg-green-50 border border-green-200 rounded-xl p-4">
+                  <div className="space-y-2 text-xs text-green-800">
+                    <div className="flex items-center">
+                      <CheckCircle className="w-3 h-3 mr-2" />
+                      <span>Din förfrågan är mottagen</span>
+                    </div>
+                    <div className="flex items-center">
+                      <CheckCircle className="w-3 h-3 mr-2" />
+                      <span>Kontakt inom 24 timmar</span>
+                    </div>
+                    <div className="flex items-center">
+                      <CheckCircle className="w-3 h-3 mr-2" />
+                      <span>Helt utan kostnad</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </div>
         </div>
+        <ContactSection />
       </div>
     );
   }
@@ -429,6 +438,9 @@ const MobileApp = ({
           </CardContent>
         </Card>
       </div>
+
+      {/* Contact Section */}
+      <ContactSection />
     </div>
   );
 };
