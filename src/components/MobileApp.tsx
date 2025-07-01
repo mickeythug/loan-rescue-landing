@@ -379,66 +379,66 @@ const MobileApp = ({
         </div>
       </div>
 
-      {/* Enhanced Mobile Form */}
+      {/* ENHANCED MOBILE FORM - WHITE BACKGROUND WITH BLACK TEXT */}
       <div className="px-6 pb-12">
-        <Card className="max-w-sm mx-auto shadow-2xl border-0 bg-white/98 backdrop-blur-lg rounded-3xl overflow-hidden">
-          <CardContent className="p-8">
+        <Card className="max-w-sm mx-auto shadow-2xl border-0 bg-white rounded-3xl overflow-hidden">
+          <CardContent className="p-8 bg-white">
             <div className="text-center mb-8">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <Zap className="w-8 h-8 text-white" />
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <Zap className="w-10 h-10 text-white" />
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-3 leading-tight">
-                Få ditt lånebesked
+              <h2 className="text-3xl font-black text-gray-900 mb-4 leading-tight">
+                FÅ DITT LÅNEBESKED
               </h2>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-xl text-gray-700 leading-relaxed font-semibold">
                 Fyll i dina uppgifter nedan för att se hur mycket du kan få
               </p>
             </div>
 
-            <form onSubmit={handleFormSubmit} className="space-y-6">
-              <div className="grid grid-cols-2 gap-4">
+            <form onSubmit={handleFormSubmit} className="space-y-8">
+              <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <Label htmlFor="firstName" className="text-lg font-black text-gray-900 mb-4 block">
+                  <Label htmlFor="firstName" className="text-xl font-black text-gray-900 mb-4 block uppercase tracking-wide">
                     FÖRNAMN
                   </Label>
                   <Input
                     id="firstName"
                     value={formData.firstName}
                     onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                    className={`h-16 text-lg font-semibold rounded-2xl border-3 transition-all duration-300 bg-white text-gray-900 placeholder:text-gray-500 ${
+                    className={`h-16 text-xl font-bold rounded-2xl border-4 transition-all duration-300 bg-white text-gray-900 placeholder:text-gray-500 ${
                       errors.firstName 
                         ? 'border-red-500 focus:border-red-600 focus:ring-4 focus:ring-red-200' 
-                        : 'border-gray-400 focus:border-blue-600 focus:ring-4 focus:ring-blue-200'
+                        : 'border-gray-500 focus:border-blue-600 focus:ring-4 focus:ring-blue-200'
                     }`}
                     placeholder="Ange förnamn"
                     required
                   />
                   {errors.firstName && (
-                    <div className="flex items-center mt-3 text-red-700 text-base font-bold">
-                      <AlertCircle className="w-5 h-5 mr-2" />
+                    <div className="flex items-center mt-3 text-red-700 text-lg font-black">
+                      <AlertCircle className="w-6 h-6 mr-2" />
                       <span>{errors.firstName}</span>
                     </div>
                   )}
                 </div>
                 <div>
-                  <Label htmlFor="lastName" className="text-lg font-black text-gray-900 mb-4 block">
+                  <Label htmlFor="lastName" className="text-xl font-black text-gray-900 mb-4 block uppercase tracking-wide">
                     EFTERNAMN
                   </Label>
                   <Input
                     id="lastName"
                     value={formData.lastName}
                     onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                    className={`h-16 text-lg font-semibold rounded-2xl border-3 transition-all duration-300 bg-white text-gray-900 placeholder:text-gray-500 ${
+                    className={`h-16 text-xl font-bold rounded-2xl border-4 transition-all duration-300 bg-white text-gray-900 placeholder:text-gray-500 ${
                       errors.lastName 
                         ? 'border-red-500 focus:border-red-600 focus:ring-4 focus:ring-red-200' 
-                        : 'border-gray-400 focus:border-blue-600 focus:ring-4 focus:ring-blue-200'
+                        : 'border-gray-500 focus:border-blue-600 focus:ring-4 focus:ring-blue-200'
                     }`}
                     placeholder="Ange efternamn"
                     required
                   />
                   {errors.lastName && (
-                    <div className="flex items-center mt-3 text-red-700 text-base font-bold">
-                      <AlertCircle className="w-5 h-5 mr-2" />
+                    <div className="flex items-center mt-3 text-red-700 text-lg font-black">
+                      <AlertCircle className="w-6 h-6 mr-2" />
                       <span>{errors.lastName}</span>
                     </div>
                   )}
@@ -446,7 +446,7 @@ const MobileApp = ({
               </div>
 
               <div>
-                <Label htmlFor="personalNumber" className="text-lg font-black text-gray-900 mb-4 block">
+                <Label htmlFor="personalNumber" className="text-xl font-black text-gray-900 mb-4 block uppercase tracking-wide">
                   PERSONNUMMER
                 </Label>
                 <Input
@@ -454,23 +454,23 @@ const MobileApp = ({
                   placeholder="ÅÅÅÅMMDD-XXXX"
                   value={formData.personalNumber}
                   onChange={handlePersonalNumberChange}
-                  className={`h-16 text-lg font-semibold rounded-2xl border-3 transition-all duration-300 bg-white text-gray-900 placeholder:text-gray-500 ${
+                  className={`h-16 text-xl font-bold rounded-2xl border-4 transition-all duration-300 bg-white text-gray-900 placeholder:text-gray-500 ${
                     errors.personalNumber 
                       ? 'border-red-500 focus:border-red-600 focus:ring-4 focus:ring-red-200' 
-                      : 'border-gray-400 focus:border-blue-600 focus:ring-4 focus:ring-blue-200'
+                      : 'border-gray-500 focus:border-blue-600 focus:ring-4 focus:ring-blue-200'
                   }`}
                   required
                 />
                 {errors.personalNumber && (
-                  <div className="flex items-center mt-3 text-red-700 text-base font-bold">
-                    <AlertCircle className="w-5 h-5 mr-2" />
+                  <div className="flex items-center mt-3 text-red-700 text-lg font-black">
+                    <AlertCircle className="w-6 h-6 mr-2" />
                     <span>{errors.personalNumber}</span>
                   </div>
                 )}
               </div>
 
               <div>
-                <Label htmlFor="email" className="text-lg font-black text-gray-900 mb-4 block">
+                <Label htmlFor="email" className="text-xl font-black text-gray-900 mb-4 block uppercase tracking-wide">
                   E-POSTADRESS
                 </Label>
                 <Input
@@ -478,24 +478,24 @@ const MobileApp = ({
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className={`h-16 text-lg font-semibold rounded-2xl border-3 transition-all duration-300 bg-white text-gray-900 placeholder:text-gray-500 ${
+                  className={`h-16 text-xl font-bold rounded-2xl border-4 transition-all duration-300 bg-white text-gray-900 placeholder:text-gray-500 ${
                     errors.email 
                       ? 'border-red-500 focus:border-red-600 focus:ring-4 focus:ring-red-200' 
-                      : 'border-gray-400 focus:border-blue-600 focus:ring-4 focus:ring-blue-200'
+                      : 'border-gray-500 focus:border-blue-600 focus:ring-4 focus:ring-blue-200'
                   }`}
                   placeholder="exempel@email.com"
                   required
                 />
                 {errors.email && (
-                  <div className="flex items-center mt-3 text-red-700 text-base font-bold">
-                    <AlertCircle className="w-5 h-5 mr-2" />
+                  <div className="flex items-center mt-3 text-red-700 text-lg font-black">
+                    <AlertCircle className="w-6 h-6 mr-2" />
                     <span>{errors.email}</span>
                   </div>
                 )}
               </div>
 
               <div>
-                <Label htmlFor="phone" className="text-lg font-black text-gray-900 mb-4 block">
+                <Label htmlFor="phone" className="text-xl font-black text-gray-900 mb-4 block uppercase tracking-wide">
                   MOBILNUMMER
                 </Label>
                 <Input
@@ -503,23 +503,23 @@ const MobileApp = ({
                   placeholder="07X-XXX XX XX"
                   value={formData.phone}
                   onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                  className={`h-16 text-lg font-semibold rounded-2xl border-3 transition-all duration-300 bg-white text-gray-900 placeholder:text-gray-500 ${
+                  className={`h-16 text-xl font-bold rounded-2xl border-4 transition-all duration-300 bg-white text-gray-900 placeholder:text-gray-500 ${
                     errors.phone 
                       ? 'border-red-500 focus:border-red-600 focus:ring-4 focus:ring-red-200' 
-                      : 'border-gray-400 focus:border-blue-600 focus:ring-4 focus:ring-blue-200'
+                      : 'border-gray-500 focus:border-blue-600 focus:ring-4 focus:ring-blue-200'
                   }`}
                   required
                 />
                 {errors.phone && (
-                  <div className="flex items-center mt-3 text-red-700 text-base font-bold">
-                    <AlertCircle className="w-5 h-5 mr-2" />
+                  <div className="flex items-center mt-3 text-red-700 text-lg font-black">
+                    <AlertCircle className="w-6 h-6 mr-2" />
                     <span>{errors.phone}</span>
                   </div>
                 )}
               </div>
 
               <div>
-                <Label htmlFor="income" className="text-lg font-black text-gray-900 mb-4 block">
+                <Label htmlFor="income" className="text-xl font-black text-gray-900 mb-4 block uppercase tracking-wide">
                   ÅRSINKOMST (KR)
                 </Label>
                 <Input
@@ -528,43 +528,43 @@ const MobileApp = ({
                   placeholder="250 000"
                   value={formData.income}
                   onChange={(e) => setFormData({...formData, income: e.target.value})}
-                  className={`h-16 text-lg font-semibold rounded-2xl border-3 transition-all duration-300 bg-white text-gray-900 placeholder:text-gray-500 ${
+                  className={`h-16 text-xl font-bold rounded-2xl border-4 transition-all duration-300 bg-white text-gray-900 placeholder:text-gray-500 ${
                     errors.income 
                       ? 'border-red-500 focus:border-red-600 focus:ring-4 focus:ring-red-200' 
-                      : 'border-gray-400 focus:border-blue-600 focus:ring-4 focus:ring-blue-200'
+                      : 'border-gray-500 focus:border-blue-600 focus:ring-4 focus:ring-blue-200'
                   }`}
                   required
                 />
                 {errors.income && (
-                  <div className="flex items-center mt-3 text-red-700 text-base font-bold">
-                    <AlertCircle className="w-5 h-5 mr-2" />
+                  <div className="flex items-center mt-3 text-red-700 text-lg font-black">
+                    <AlertCircle className="w-6 h-6 mr-2" />
                     <span>{errors.income}</span>
                   </div>
                 )}
               </div>
 
               <div>
-                <Label className="text-lg font-black text-gray-900 mb-6 block">
+                <Label className="text-xl font-black text-gray-900 mb-6 block uppercase tracking-wide">
                   SKULDER HOS KRONOFOGDEN?
                 </Label>
                 <RadioGroup
                   value={formData.hasDebts}
                   onValueChange={(value) => setFormData({...formData, hasDebts: value})}
-                  className="flex gap-10"
+                  className="flex gap-12"
                 >
                   <div className="flex items-center space-x-4">
-                    <RadioGroupItem value="yes" id="debts-yes" className="w-8 h-8 border-3 border-gray-500" />
-                    <Label htmlFor="debts-yes" className="text-xl font-bold text-gray-900 cursor-pointer">JA</Label>
+                    <RadioGroupItem value="yes" id="debts-yes" className="w-8 h-8 border-4 border-gray-700" />
+                    <Label htmlFor="debts-yes" className="text-2xl font-black text-gray-900 cursor-pointer">JA</Label>
                   </div>
                   <div className="flex items-center space-x-4">
-                    <RadioGroupItem value="no" id="debts-no" className="w-8 h-8 border-3 border-gray-500" />
-                    <Label htmlFor="debts-no" className="text-xl font-bold text-gray-900 cursor-pointer">NEJ</Label>
+                    <RadioGroupItem value="no" id="debts-no" className="w-8 h-8 border-4 border-gray-700" />
+                    <Label htmlFor="debts-no" className="text-2xl font-black text-gray-900 cursor-pointer">NEJ</Label>
                   </div>
                 </RadioGroup>
               </div>
 
               <div>
-                <Label htmlFor="referralId" className="text-lg font-black text-gray-900 mb-4 block">
+                <Label htmlFor="referralId" className="text-xl font-black text-gray-900 mb-4 block uppercase tracking-wide">
                   REFERRAL ID (FRIVILLIGT)
                 </Label>
                 <Input
@@ -572,19 +572,19 @@ const MobileApp = ({
                   placeholder="Ange referral ID om du har ett"
                   value={formData.referralId}
                   onChange={(e) => setFormData({...formData, referralId: e.target.value})}
-                  className="h-16 text-lg font-semibold rounded-2xl border-3 border-gray-400 focus:border-blue-600 focus:ring-4 focus:ring-blue-200 transition-all duration-300 bg-white text-gray-900 placeholder:text-gray-500"
+                  className="h-16 text-xl font-bold rounded-2xl border-4 border-gray-500 focus:border-blue-600 focus:ring-4 focus:ring-blue-200 transition-all duration-300 bg-white text-gray-900 placeholder:text-gray-500"
                 />
-                <p className="text-base text-gray-700 mt-4 leading-relaxed font-semibold">
+                <p className="text-lg text-gray-700 mt-4 leading-relaxed font-bold">
                   Om någon rekommenderat dig, ange deras referral ID här för eventuell bonus
                 </p>
               </div>
 
-              <div className="bg-gradient-to-r from-emerald-50 to-green-50 border-3 border-green-300 rounded-2xl p-6 shadow-lg">
+              <div className="bg-gradient-to-r from-emerald-50 to-green-50 border-4 border-green-400 rounded-2xl p-8 shadow-xl">
                 <div className="flex items-start">
-                  <Lock className="w-7 h-7 text-green-600 mr-4 mt-1 flex-shrink-0" />
+                  <Lock className="w-8 h-8 text-green-600 mr-4 mt-1 flex-shrink-0" />
                   <div>
-                    <p className="text-lg font-black text-green-800 mb-3">🔒 TRYGG HANTERING</p>
-                    <p className="text-base text-green-700 leading-relaxed font-semibold">
+                    <p className="text-xl font-black text-green-800 mb-4">🔒 TRYGG HANTERING</p>
+                    <p className="text-lg text-green-700 leading-relaxed font-bold">
                       Dina uppgifter behandlas enligt GDPR och krypteras säkert. Ingen kreditupplysning görs.
                     </p>
                   </div>
@@ -594,23 +594,23 @@ const MobileApp = ({
               <Button 
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-7 rounded-2xl font-black text-xl shadow-xl transform hover:scale-105 transition-all duration-300 border-0"
+                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-8 rounded-2xl font-black text-2xl shadow-xl transform hover:scale-105 transition-all duration-300 border-0"
               >
                 {isSubmitting ? (
                   <>
-                    <Loader2 className="w-7 h-7 mr-3 animate-spin" />
+                    <Loader2 className="w-8 h-8 mr-3 animate-spin" />
                     BEARBETAR...
                   </>
                 ) : (
                   <>
                     👉 FÅ DITT BESKED NU
-                    <ArrowRight className="w-7 h-7 ml-3" />
+                    <ArrowRight className="w-8 h-8 ml-3" />
                   </>
                 )}
               </Button>
               
               <div className="text-center">
-                <p className="text-base text-gray-700 font-black">
+                <p className="text-xl text-gray-900 font-black">
                   ⚡ GENOMSNITTLIG SVARSTID: 2 MINUTER
                 </p>
               </div>
