@@ -210,16 +210,12 @@ const MobileApp = ({
       {/* Mobile Hero */}
       <div className="relative pt-12 pb-8 px-4">
         <div className="text-center text-white max-w-sm mx-auto">
-          <div className="flex items-center justify-center mb-4">
-            <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
-              <Zap className="w-6 h-6 text-white" />
-            </div>
-          </div>
           <h1 className="text-2xl font-bold mb-3 leading-tight">
-            Få Privatlån Trots Dålig Kreditvärdighet
+            VILL DU HA ETT PRIVATLÅN – MEN BLIR ALLTID NEKAD?
           </h1>
           <p className="text-sm text-blue-100 mb-6 leading-relaxed">
-            Vi hjälper dig få lån beviljat. Inga kreditupplysningar. Helt gratis besked.
+            Vi hjälper dig att få lån beviljat. Inget krav på kreditvärdighet.
+            <span className="block mt-2">Inga kreditupplysningar. Inget bindande.</span>
           </p>
         </div>
       </div>
@@ -424,7 +420,7 @@ const MobileApp = ({
                   </>
                 ) : (
                   <>
-                    VISA HUR MYCKET JAG KAN FÅ
+                    👉 FÅ DITT BESKED NU
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </>
                 )}
