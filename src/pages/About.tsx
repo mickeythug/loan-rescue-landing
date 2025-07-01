@@ -1,4 +1,3 @@
-
 import { Shield, Users, Clock, Award, CheckCircle, Phone, Mail, MapPin, TrendingUp, Lock, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,6 +5,13 @@ import { Link } from "react-router-dom";
 import BankIDLogin from "@/components/BankIDLogin";
 
 const About = () => {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact-section');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -23,15 +29,18 @@ const About = () => {
                 <Link to="/" className="text-gray-300 hover:text-blue-400 font-medium transition-colors duration-200">
                   Hem
                 </Link>
-                <a href="#" className="text-gray-300 hover:text-blue-400 font-medium transition-colors duration-200">
+                <Link to="/#form" className="text-gray-300 hover:text-blue-400 font-medium transition-colors duration-200">
                   Lån
-                </a>
+                </Link>
                 <Link to="/om-oss" className="text-blue-400 font-medium">
                   Om oss
                 </Link>
-                <a href="#" className="text-gray-300 hover:text-blue-400 font-medium transition-colors duration-200">
+                <button 
+                  onClick={scrollToContact}
+                  className="text-gray-300 hover:text-blue-400 font-medium transition-colors duration-200"
+                >
                   Kontakt
-                </a>
+                </button>
               </nav>
               
               <div className="flex items-center space-x-3">
@@ -425,7 +434,7 @@ const About = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 bg-white">
+      <section id="contact-section" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
