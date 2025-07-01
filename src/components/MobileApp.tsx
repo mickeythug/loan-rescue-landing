@@ -1,10 +1,11 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { CheckCircle, Shield, Clock, Users, Loader2, AlertCircle, XCircle, ArrowRight, Star, Zap, ArrowLeft } from "lucide-react";
+import { CheckCircle, Shield, Clock, Users, Loader2, AlertCircle, XCircle, ArrowRight, Star, Zap, ArrowLeft, Phone, Mail, MapPin, MessageCircle, Award, TrendingUp, Lock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useSmartFormValidation, formValidationRules } from "@/hooks/useSmartFormValidation";
 import ContactSection from "@/components/ContactSection";
@@ -120,34 +121,38 @@ const MobileApp = ({
   if (currentStep === "result") {
     if (isRejected) {
       return (
-        <div className="min-h-screen bg-gradient-to-br from-red-50 to-red-100">
-          <div className="p-4">
-            <div className="max-w-sm mx-auto pt-8">
-              <Card className="shadow-xl border-0 bg-white/95 backdrop-blur">
-                <CardContent className="p-6 text-center">
-                  <div className="mb-4">
+        <div className="min-h-screen bg-gradient-to-br from-red-50 via-red-100 to-orange-50">
+          <div className="p-6">
+            <div className="max-w-sm mx-auto pt-12">
+              <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-lg rounded-3xl overflow-hidden">
+                <CardContent className="p-8 text-center">
+                  <div className="mb-6">
                     <Button
                       onClick={handleBack}
-                      variant="outline"
+                      variant="ghost"
                       size="sm"
-                      className="flex items-center text-sm mb-4"
+                      className="flex items-center text-sm mb-6 text-gray-600 hover:text-gray-800"
                     >
                       <ArrowLeft className="w-4 h-4 mr-2" />
                       Tillbaka
                     </Button>
                   </div>
-                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <XCircle className="w-8 h-8 text-red-600" />
+                  <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <XCircle className="w-10 h-10 text-white" />
                   </div>
-                  <h1 className="text-xl font-bold text-gray-900 mb-3">
+                  <h1 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
                     Tyvärr kan vi inte hjälpa dig
                   </h1>
-                  <p className="text-sm text-gray-600 mb-6 leading-relaxed">
+                  <p className="text-gray-600 mb-8 leading-relaxed">
                     På grund av befintliga skulder kan vi tyvärr inte erbjuda dig ett lån för tillfället.
                   </p>
-                  <div className="bg-blue-50 rounded-lg p-4 mb-4">
-                    <p className="text-xs text-blue-800">
-                      Vi rekommenderar att du kontaktar en skuldrådgivare för hjälp.
+                  <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6 mb-6">
+                    <div className="flex items-center mb-3">
+                      <Shield className="w-5 h-5 text-blue-600 mr-2" />
+                      <span className="font-semibold text-blue-900">Rekommendation</span>
+                    </div>
+                    <p className="text-sm text-blue-800 leading-relaxed">
+                      Vi rekommenderar att du kontaktar en skuldrådgivare för professionell hjälp med din ekonomiska situation.
                     </p>
                   </div>
                 </CardContent>
@@ -160,41 +165,45 @@ const MobileApp = ({
     }
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
-        <div className="p-4">
-          <div className="max-w-sm mx-auto pt-8">
-            <Card className="shadow-xl border-0 bg-white/95 backdrop-blur">
-              <CardContent className="p-6 text-center">
-                <div className="mb-4">
+      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-100 to-teal-50">
+        <div className="p-6">
+          <div className="max-w-sm mx-auto pt-12">
+            <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-lg rounded-3xl overflow-hidden">
+              <CardContent className="p-8 text-center">
+                <div className="mb-6">
                   <Button
                     onClick={handleBack}
-                    variant="outline"
+                    variant="ghost"
                     size="sm"
-                    className="flex items-center text-sm mb-4"
+                    className="flex items-center text-sm mb-6 text-gray-600 hover:text-gray-800"
                   >
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     Tillbaka
                   </Button>
                 </div>
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-8 h-8 text-green-600" />
+                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                  <CheckCircle className="w-10 h-10 text-white" />
                 </div>
-                <h1 className="text-xl font-bold text-gray-900 mb-2">
-                  Grattis! Du kan få:
+                <h1 className="text-2xl font-bold text-gray-900 mb-3 leading-tight">
+                  Fantastiskt! Du kan få:
                 </h1>
-                <div className="text-3xl font-bold text-green-600 mb-4">
+                <div className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-6">
                   {loanAmount.toLocaleString('sv-SE')} kr
                 </div>
-                <p className="text-sm text-gray-600 mb-6 leading-relaxed">
-                  Detta är en uppskattning baserad på dina uppgifter. Vill du gå vidare?
+                <p className="text-gray-600 mb-8 leading-relaxed">
+                  Detta är en preliminär bedömning baserad på dina uppgifter. Vill du gå vidare för att säkra ditt lån?
                 </p>
                 <Button 
                   onClick={handleContinue}
-                  className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-semibold"
+                  className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white py-4 rounded-2xl font-semibold text-lg shadow-lg transform hover:scale-105 transition-all duration-200"
                 >
                   JA – JAG VILL GÅ VIDARE
-                  <ArrowRight className="w-4 h-4 ml-2" />
+                  <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
+                <div className="mt-6 flex items-center justify-center text-sm text-gray-500">
+                  <Lock className="w-4 h-4 mr-2" />
+                  <span>100% säker och konfidentiell</span>
+                </div>
               </CardContent>
             </Card>
           </div>
@@ -206,46 +215,51 @@ const MobileApp = ({
 
   if (currentStep === "thanks") {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-        <div className="p-4">
-          <div className="max-w-sm mx-auto pt-8">
-            <Card className="shadow-xl border-0 bg-white/95 backdrop-blur">
-              <CardContent className="p-6 text-center">
-                <div className="mb-4">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-100 to-purple-50">
+        <div className="p-6">
+          <div className="max-w-sm mx-auto pt-12">
+            <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-lg rounded-3xl overflow-hidden">
+              <CardContent className="p-8 text-center">
+                <div className="mb-6">
                   <Button
                     onClick={handleBack}
-                    variant="outline"
+                    variant="ghost"
                     size="sm"
-                    className="flex items-center text-sm mb-4"
+                    className="flex items-center text-sm mb-6 text-gray-600 hover:text-gray-800"
                   >
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     Tillbaka
                   </Button>
                 </div>
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-8 h-8 text-blue-600" />
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                  <Users className="w-10 h-10 text-white" />
                 </div>
-                <h1 className="text-xl font-bold text-gray-900 mb-3">
+                <h1 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
                   Tack för din förfrågan!
                 </h1>
-                <p className="text-sm text-gray-600 mb-6 leading-relaxed">
-                  En av våra lånespecialister kontaktar dig inom kort.
+                <p className="text-gray-600 mb-8 leading-relaxed">
+                  En av våra erfarna lånespecialister kommer att kontakta dig inom kort för att hjälpa dig vidare.
                 </p>
-                <div className="bg-green-50 border border-green-200 rounded-xl p-4">
-                  <div className="space-y-2 text-xs text-green-800">
-                    <div className="flex items-center">
-                      <CheckCircle className="w-3 h-3 mr-2" />
-                      <span>Din förfrågan är mottagen</span>
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-6 mb-6">
+                  <div className="space-y-4">
+                    <div className="flex items-center text-green-800">
+                      <CheckCircle className="w-5 h-5 mr-3 text-green-600" />
+                      <span className="font-medium">Din förfrågan är mottagen</span>
                     </div>
-                    <div className="flex items-center">
-                      <CheckCircle className="w-3 h-3 mr-2" />
-                      <span>Kontakt inom 24 timmar</span>
+                    <div className="flex items-center text-green-800">
+                      <Clock className="w-5 h-5 mr-3 text-green-600" />
+                      <span className="font-medium">Kontakt inom 24 timmar</span>
                     </div>
-                    <div className="flex items-center">
-                      <CheckCircle className="w-3 h-3 mr-2" />
-                      <span>Helt utan kostnad</span>
+                    <div className="flex items-center text-green-800">
+                      <Shield className="w-5 h-5 mr-3 text-green-600" />
+                      <span className="font-medium">Helt utan kostnad</span>
                     </div>
                   </div>
+                </div>
+                <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4">
+                  <p className="text-sm text-blue-800 font-medium">
+                    💡 Tips: Håll din telefon redo – vi ringer vanligtvis inom några timmar!
+                  </p>
                 </div>
               </CardContent>
             </Card>
@@ -257,87 +271,108 @@ const MobileApp = ({
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
-      {/* Mobile Hero */}
-      <div className="relative pt-12 pb-8 px-4">
-        <div className="text-center text-white max-w-sm mx-auto">
-          <h1 className="text-2xl font-bold mb-3 leading-tight">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
+      {/* Enhanced Mobile Hero */}
+      <div className="relative pt-16 pb-12 px-6">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative z-10 text-center text-white max-w-sm mx-auto">
+          <div className="mb-6">
+            <div className="inline-flex items-center bg-white/10 backdrop-blur-lg rounded-full px-4 py-2 mb-4">
+              <Award className="w-4 h-4 mr-2 text-yellow-400" />
+              <span className="text-sm font-medium">Betrodd av 10,000+ kunder</span>
+            </div>
+          </div>
+          <h1 className="text-3xl font-bold mb-4 leading-tight">
             VILL DU HA ETT PRIVATLÅN – MEN BLIR ALLTID NEKAD?
           </h1>
-          <p className="text-sm text-blue-100 mb-6 leading-relaxed">
+          <p className="text-lg text-blue-100 mb-8 leading-relaxed">
             Vi hjälper dig att få lån beviljat. Inget krav på kreditvärdighet.
-            <span className="block mt-2">Inga kreditupplysningar. Inget bindande.</span>
+            <span className="block mt-2 font-semibold">Inga kreditupplysningar. Inget bindande.</span>
           </p>
+          <div className="flex items-center justify-center space-x-4 text-sm">
+            <div className="flex items-center">
+              <TrendingUp className="w-4 h-4 mr-1 text-green-400" />
+              <span>95% godkännande</span>
+            </div>
+            <div class="w-1 h-1 bg-white/50 rounded-full"></div>
+            <div className="flex items-center">
+              <Zap className="w-4 h-4 mr-1 text-yellow-400" />
+              <span>Svar på 2 min</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Benefits Cards */}
-      <div className="px-4 pb-8">
-        <div className="grid grid-cols-3 gap-3 max-w-sm mx-auto mb-8">
-          <Card className="bg-white/10 backdrop-blur border-0">
-            <CardContent className="p-3 text-center">
-              <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center mx-auto mb-2">
-                <Shield className="w-4 h-4 text-white" />
+      {/* Enhanced Mobile Benefits Cards */}
+      <div className="px-6 pb-12">
+        <div className="grid grid-cols-3 gap-4 max-w-sm mx-auto mb-12">
+          <Card className="bg-white/10 backdrop-blur-lg border-0 hover:bg-white/15 transition-all duration-300">
+            <CardContent className="p-4 text-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg">
+                <Shield className="w-6 h-6 text-white" />
               </div>
-              <p className="text-xs text-white font-medium">Ingen kredit-kontroll</p>
+              <p className="text-sm text-white font-semibold mb-1">Ingen kredit-kontroll</p>
+              <p className="text-xs text-blue-200">Påverkar ej UC</p>
             </CardContent>
           </Card>
-          <Card className="bg-white/10 backdrop-blur border-0">
-            <CardContent className="p-3 text-center">
-              <div className="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center mx-auto mb-2">
-                <Clock className="w-4 h-4 text-white" />
+          <Card className="bg-white/10 backdrop-blur-lg border-0 hover:bg-white/15 transition-all duration-300">
+            <CardContent className="p-4 text-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg">
+                <Clock className="w-6 h-6 text-white" />
               </div>
-              <p className="text-xs text-white font-medium">Svar direkt</p>
+              <p className="text-sm text-white font-semibold mb-1">Svar direkt</p>
+              <p className="text-xs text-blue-200">På 2 minuter</p>
             </CardContent>
           </Card>
-          <Card className="bg-white/10 backdrop-blur border-0">
-            <CardContent className="p-3 text-center">
-              <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center mx-auto mb-2">
-                <Star className="w-4 h-4 text-white" />
+          <Card className="bg-white/10 backdrop-blur-lg border-0 hover:bg-white/15 transition-all duration-300">
+            <CardContent className="p-4 text-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg">
+                <Star className="w-6 h-6 text-white" />
               </div>
-              <p className="text-xs text-white font-medium">Personlig hjälp</p>
+              <p className="text-sm text-white font-semibold mb-1">Personlig hjälp</p>
+              <p className="text-xs text-blue-200">Från experter</p>
             </CardContent>
           </Card>
         </div>
       </div>
 
-      {/* How it Works Section - Mobile */}
-      <div className="px-4 pb-8">
+      {/* Enhanced How it Works Section - Mobile */}
+      <div className="px-6 pb-12">
         <div className="max-w-sm mx-auto">
-          <h2 className="text-lg font-bold text-white text-center mb-6">
+          <h2 className="text-2xl font-bold text-white text-center mb-8 leading-tight">
             Så fungerar det – enkelt, snabbt och tryggt
           </h2>
-          <div className="space-y-4">
-            <Card className="bg-white/10 backdrop-blur border-0">
-              <CardContent className="p-4 flex items-center">
-                <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center mr-3 flex-shrink-0 text-sm font-bold">
+          <div className="space-y-6">
+            <Card className="bg-white/10 backdrop-blur-lg border-0">
+              <CardContent className="p-6 flex items-start">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-2xl flex items-center justify-center mr-4 flex-shrink-0 font-bold text-lg shadow-lg">
                   1
                 </div>
-                <div>
-                  <h3 className="text-sm font-bold text-white mb-1">Fyll i dina uppgifter</h3>
-                  <p className="text-xs text-blue-100">Namn, personnummer, inkomst etc.</p>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-white mb-2">Fyll i dina uppgifter</h3>
+                  <p className="text-sm text-blue-100 leading-relaxed">Namn, personnummer, inkomst och några enkla frågor. Tar bara 2 minuter.</p>
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-white/10 backdrop-blur border-0">
-              <CardContent className="p-4 flex items-center">
-                <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center mr-3 flex-shrink-0 text-sm font-bold">
+            <Card className="bg-white/10 backdrop-blur-lg border-0">
+              <CardContent className="p-6 flex items-start">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-emerald-600 text-white rounded-2xl flex items-center justify-center mr-4 flex-shrink-0 font-bold text-lg shadow-lg">
                   2
                 </div>
-                <div>
-                  <h3 className="text-sm font-bold text-white mb-1">Få besked direkt</h3>
-                  <p className="text-xs text-blue-100">Inga register kontrolleras, bara baserat på dina siffror.</p>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-white mb-2">Få besked direkt</h3>
+                  <p className="text-sm text-blue-100 leading-relaxed">Inga register kontrolleras, endast baserat på dina siffror. Inget UC-spår.</p>
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-white/10 backdrop-blur border-0">
-              <CardContent className="p-4 flex items-center">
-                <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center mr-3 flex-shrink-0 text-sm font-bold">
+            <Card className="bg-white/10 backdrop-blur-lg border-0">
+              <CardContent className="p-6 flex items-start">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 text-white rounded-2xl flex items-center justify-center mr-4 flex-shrink-0 font-bold text-lg shadow-lg">
                   3
                 </div>
-                <div>
-                  <h3 className="text-sm font-bold text-white mb-1">Vi kontaktar dig</h3>
-                  <p className="text-xs text-blue-100">Om du vill gå vidare hjälper vi dig säkra lånet.</p>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-white mb-2">Vi kontaktar dig</h3>
+                  <p className="text-sm text-blue-100 leading-relaxed">Om du vill gå vidare hjälper våra experter dig säkra det bästa lånet.</p>
                 </div>
               </CardContent>
             </Card>
@@ -345,53 +380,60 @@ const MobileApp = ({
         </div>
       </div>
 
-      {/* Mobile Form */}
-      <div className="px-4 pb-8">
-        <Card className="max-w-sm mx-auto shadow-2xl border-0 bg-white/95 backdrop-blur">
-          <CardContent className="p-6">
-            <div className="text-center mb-6">
-              <h2 className="text-lg font-bold text-gray-900 mb-2">
+      {/* Enhanced Mobile Form */}
+      <div className="px-6 pb-12">
+        <Card className="max-w-sm mx-auto shadow-2xl border-0 bg-white/98 backdrop-blur-lg rounded-3xl overflow-hidden">
+          <CardContent className="p-8">
+            <div className="text-center mb-8">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <Zap className="w-8 h-8 text-white" />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-3 leading-tight">
                 Få ditt lånebesked
               </h2>
-              <p className="text-xs text-gray-600">
-                Fyll i dina uppgifter nedan
+              <p className="text-gray-600 leading-relaxed">
+                Fyll i dina uppgifter nedan för att se hur mycket du kan få
               </p>
             </div>
 
-            <form onSubmit={handleFormSubmit} className="space-y-4">
-              <div className="grid grid-cols-2 gap-3">
+            <form onSubmit={handleFormSubmit} className="space-y-6">
+              <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="firstName" className="text-xs font-medium text-gray-700">Förnamn</Label>
+                  <Label htmlFor="firstName" className="text-sm font-semibold text-gray-700 mb-2 block">Förnamn</Label>
                   <Input
                     id="firstName"
                     value={formData.firstName}
                     onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                    className={`mt-1 h-10 text-sm rounded-lg ${
-                      errors.firstName ? 'border-red-500' : 'border-gray-300'
+                    className={`h-12 text-base rounded-xl border-2 transition-all duration-200 ${
+                      errors.firstName 
+                        ? 'border-red-400 focus:border-red-500' 
+                        : 'border-gray-200 focus:border-blue-500'
                     }`}
                     required
                   />
                   {errors.firstName && (
-                    <div className="flex items-center mt-1 text-red-500 text-xs">
-                      <AlertCircle className="w-3 h-3 mr-1" />
+                    <div className="flex items-center mt-2 text-red-500 text-sm">
+                      <AlertCircle className="w-4 h-4 mr-1" />
                       <span>{errors.firstName}</span>
                     </div>
                   )}
                 </div>
                 <div>
-                  <Label htmlFor="lastName" className="text-xs font-medium text-gray-700">Efternamn</Label>
+                  <Label htmlFor="lastName" className="text-sm font-semibold text-gray-700 mb-2 block">Efternamn</Label>
                   <Input
                     id="lastName"
                     value={formData.lastName}
                     onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                    className={`mt-1 h-10 text-sm rounded-lg ${
-                      errors.lastName ? 'border-red-500' : 'border-gray-300'
+                    className={`h-12 text-base rounded-xl border-2 transition-all duration-200 ${
+                      errors.lastName 
+                        ? 'border-red-400 focus:border-red-500' 
+                        : 'border-gray-200 focus:border-blue-500'
                     }`}
                     required
                   />
                   {errors.lastName && (
-                    <div className="flex items-center mt-1 text-red-500 text-xs">
-                      <AlertCircle className="w-3 h-3 mr-1" />
+                    <div className="flex items-center mt-2 text-red-500 text-sm">
+                      <AlertCircle className="w-4 h-4 mr-1" />
                       <span>{errors.lastName}</span>
                     </div>
                   )}
@@ -399,106 +441,114 @@ const MobileApp = ({
               </div>
 
               <div>
-                <Label htmlFor="personalNumber" className="text-xs font-medium text-gray-700">Personnummer</Label>
+                <Label htmlFor="personalNumber" className="text-sm font-semibold text-gray-700 mb-2 block">Personnummer</Label>
                 <Input
                   id="personalNumber"
                   placeholder="YYYYMMDD-XXXX"
                   value={formData.personalNumber}
                   onChange={handlePersonalNumberChange}
-                  className={`mt-1 h-10 text-sm rounded-lg ${
-                    errors.personalNumber ? 'border-red-500' : 'border-gray-300'
+                  className={`h-12 text-base rounded-xl border-2 transition-all duration-200 ${
+                    errors.personalNumber 
+                      ? 'border-red-400 focus:border-red-500' 
+                      : 'border-gray-200 focus:border-blue-500'
                   }`}
                   required
                 />
                 {errors.personalNumber && (
-                  <div className="flex items-center mt-1 text-red-500 text-xs">
-                    <AlertCircle className="w-3 h-3 mr-1" />
+                  <div className="flex items-center mt-2 text-red-500 text-sm">
+                    <AlertCircle className="w-4 h-4 mr-1" />
                     <span>{errors.personalNumber}</span>
                   </div>
                 )}
               </div>
 
               <div>
-                <Label htmlFor="email" className="text-xs font-medium text-gray-700">E-postadress</Label>
+                <Label htmlFor="email" className="text-sm font-semibold text-gray-700 mb-2 block">E-postadress</Label>
                 <Input
                   id="email"
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className={`mt-1 h-10 text-sm rounded-lg ${
-                    errors.email ? 'border-red-500' : 'border-gray-300'
+                  className={`h-12 text-base rounded-xl border-2 transition-all duration-200 ${
+                    errors.email 
+                      ? 'border-red-400 focus:border-red-500' 
+                      : 'border-gray-200 focus:border-blue-500'
                   }`}
                   required
                 />
                 {errors.email && (
-                  <div className="flex items-center mt-1 text-red-500 text-xs">
-                    <AlertCircle className="w-3 h-3 mr-1" />
+                  <div className="flex items-center mt-2 text-red-500 text-sm">
+                    <AlertCircle className="w-4 h-4 mr-1" />
                     <span>{errors.email}</span>
                   </div>
                 )}
               </div>
 
               <div>
-                <Label htmlFor="phone" className="text-xs font-medium text-gray-700">Mobilnummer</Label>
+                <Label htmlFor="phone" className="text-sm font-semibold text-gray-700 mb-2 block">Mobilnummer</Label>
                 <Input
                   id="phone"
                   placeholder="07X-XXX XX XX"
                   value={formData.phone}
                   onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                  className={`mt-1 h-10 text-sm rounded-lg ${
-                    errors.phone ? 'border-red-500' : 'border-gray-300'
+                  className={`h-12 text-base rounded-xl border-2 transition-all duration-200 ${
+                    errors.phone 
+                      ? 'border-red-400 focus:border-red-500' 
+                      : 'border-gray-200 focus:border-blue-500'
                   }`}
                   required
                 />
                 {errors.phone && (
-                  <div className="flex items-center mt-1 text-red-500 text-xs">
-                    <AlertCircle className="w-3 h-3 mr-1" />
+                  <div className="flex items-center mt-2 text-red-500 text-sm">
+                    <AlertCircle className="w-4 h-4 mr-1" />
                     <span>{errors.phone}</span>
                   </div>
                 )}
               </div>
 
               <div>
-                <Label htmlFor="income" className="text-xs font-medium text-gray-700">Årsinkomst (kr)</Label>
+                <Label htmlFor="income" className="text-sm font-semibold text-gray-700 mb-2 block">Årsinkomst (kr)</Label>
                 <Input
                   id="income"
                   type="number"
                   placeholder="250000"
                   value={formData.income}
                   onChange={(e) => setFormData({...formData, income: e.target.value})}
-                  className={`mt-1 h-10 text-sm rounded-lg ${
-                    errors.income ? 'border-red-500' : 'border-gray-300'
+                  className={`h-12 text-base rounded-xl border-2 transition-all duration-200 ${
+                    errors.income 
+                      ? 'border-red-400 focus:border-red-500' 
+                      : 'border-gray-200 focus:border-blue-500'
                   }`}
                   required
                 />
                 {errors.income && (
-                  <div className="flex items-center mt-1 text-red-500 text-xs">
-                    <AlertCircle className="w-3 h-3 mr-1" />
+                  <div className="flex items-center mt-2 text-red-500 text-sm">
+                    <AlertCircle className="w-4 h-4 mr-1" />
                     <span>{errors.income}</span>
                   </div>
                 )}
               </div>
 
               <div>
-                <Label className="text-xs font-medium text-gray-700">Skulder hos Kronofogden?</Label>
+                <Label className="text-sm font-semibold text-gray-700 mb-3 block">Skulder hos Kronofogden?</Label>
                 <RadioGroup
                   value={formData.hasDebts}
                   onValueChange={(value) => setFormData({...formData, hasDebts: value})}
-                  className="mt-2 flex gap-4"
+                  className="flex gap-6"
                 >
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="yes" id="debts-yes" />
-                    <Label htmlFor="debts-yes" className="text-sm">Ja</Label>
+                  <div className="flex items-center space-x-3">
+                    <RadioGroupItem value="yes" id="debts-yes" className="w-5 h-5" />
+                    <Label htmlFor="debts-yes" className="text-base font-medium">Ja</Label>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="no" id="debts-no" />
-                    <Label htmlFor="debts-no" className="text-sm">Nej</Label>
+                  <div className="flex items-center space-x-3">
+                    <RadioGroupItem value="no" id="debts-no" className="w-5 h-5" />
+                    <Label htmlFor="debts-no" className="text-base font-medium">Nej</Label>
                   </div>
                 </RadioGroup>
               </div>
 
               <div>
-                <Label htmlFor="referralId" className="text-xs font-medium text-gray-700">
+                <Label htmlFor="referralId" className="text-sm font-semibold text-gray-700 mb-2 block">
                   Referral ID (frivilligt)
                 </Label>
                 <Input
@@ -506,36 +556,48 @@ const MobileApp = ({
                   placeholder="Ange referral ID om du har ett"
                   value={formData.referralId}
                   onChange={(e) => setFormData({...formData, referralId: e.target.value})}
-                  className="mt-1 h-10 text-sm rounded-lg border-gray-300"
+                  className="h-12 text-base rounded-xl border-2 border-gray-200 focus:border-blue-500 transition-all duration-200"
                 />
-                <p className="text-xs text-gray-500 mt-1">
-                  Om någon rekommenderat dig, ange deras referral ID här
+                <p className="text-sm text-gray-500 mt-2 leading-relaxed">
+                  Om någon rekommenderat dig, ange deras referral ID här för eventuell bonus
                 </p>
               </div>
 
-              <div className="bg-green-50 border border-green-200 rounded-lg p-3">
-                <p className="text-xs text-green-800 leading-relaxed">
-                  <strong>🔒 Trygg hantering:</strong> Dina uppgifter behandlas enligt GDPR. Ingen kreditupplysning görs.
-                </p>
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-6">
+                <div className="flex items-start">
+                  <Lock className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm font-semibold text-green-800 mb-1">🔒 Trygg hantering</p>
+                    <p className="text-sm text-green-700 leading-relaxed">
+                      Dina uppgifter behandlas enligt GDPR och krypteras säkert. Ingen kreditupplysning görs.
+                    </p>
+                  </div>
+                </div>
               </div>
 
               <Button 
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-semibold"
+                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-4 rounded-2xl font-bold text-lg shadow-lg transform hover:scale-105 transition-all duration-200"
               >
                 {isSubmitting ? (
                   <>
-                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    <Loader2 className="w-5 h-5 mr-3 animate-spin" />
                     BEARBETAR...
                   </>
                 ) : (
                   <>
                     👉 FÅ DITT BESKED NU
-                    <ArrowRight className="w-4 h-4 ml-2" />
+                    <ArrowRight className="w-5 h-5 ml-3" />
                   </>
                 )}
               </Button>
+              
+              <div className="text-center">
+                <p className="text-sm text-gray-500">
+                  ⚡ Genomsnittlig svarstid: 2 minuter
+                </p>
+              </div>
             </form>
           </CardContent>
         </Card>
