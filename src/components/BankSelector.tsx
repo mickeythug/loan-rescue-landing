@@ -80,7 +80,7 @@ const BankSelector = ({ value, onChange, error }: BankSelectorProps) => {
 
   return (
     <div>
-      <Label className="text-sm font-semibold text-gray-900 mb-2 block uppercase tracking-wide">
+      <Label className="text-sm font-medium text-gray-900 mb-2 block">
         Välj din bank
       </Label>
       <Select value={value} onValueChange={onChange}>

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -287,7 +286,7 @@ const MobileApp = ({
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
-      {/* Enhanced Mobile Hero with catchier text */}
+      {/* Enhanced Mobile Hero with new catchy phrases */}
       <div className="relative pt-16 pb-12 px-6">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative z-10 text-center text-white max-w-sm mx-auto">
@@ -298,12 +297,12 @@ const MobileApp = ({
             </div>
           </div>
           <h1 className="text-3xl font-bold mb-4 leading-tight">
-            ETT LÅNELÖFTE DIREKT I HANDEN, UTAN TJAFS!
+            DITT DRÖMBELOPP GODKÄNT DIREKT!
           </h1>
           <p className="text-lg text-blue-100 mb-8 leading-relaxed">
-            🎯 Privatlån • Billån • Bolån
-            <span className="block mt-2 font-semibold">✅ Inget krav på kreditvärdighet</span>
-            <span className="block font-semibold">⚡ Svar på 2 minuter - helt gratis!</span>
+            💰 Privatlån • Billån • Bolån
+            <span className="block mt-2 font-semibold">✅ Direktsvar utan krångel</span>
+            <span className="block font-semibold">⚡ Snabbt, enkelt och gratis!</span>
           </p>
           <div className="flex items-center justify-center space-x-4 text-sm">
             <div className="flex items-center">
@@ -396,7 +395,7 @@ const MobileApp = ({
         </div>
       </div>
 
-      {/* FORM SECTION WITH BANK SELECTOR */}
+      {/* FORM SECTION */}
       <div className="px-6 pb-12">
         <Card className="max-w-sm mx-auto shadow-2xl border-0 bg-white rounded-3xl overflow-hidden">
           <CardContent className="p-8 bg-white">
@@ -405,7 +404,7 @@ const MobileApp = ({
                 <Zap className="w-10 h-10 text-white" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-3 leading-tight">
-                🎯 FÅ DITT LÅNELÖFTE NU
+                💰 LÅNET I FICKAN DIREKT!
               </h2>
               <p className="text-base text-gray-700 leading-relaxed">
                 Privatlån, billån eller bolån - vi fixar det bästa för dig!
@@ -626,7 +625,7 @@ const MobileApp = ({
                   </>
                 ) : (
                   <>
-                    🎯 FÅ DITT LÅNELÖFTE NU
+                    💰 FÅ DITT BEVILJADE LÅN NU
                     <ArrowRight className="w-6 h-6 ml-3" />
                   </>
                 )}

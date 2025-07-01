@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileApp from "@/components/MobileApp";
@@ -235,23 +234,23 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
-      {/* Hero Section with updated catchy text */}
+      {/* Hero Section with new catchy phrases */}
       <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center text-white px-3 sm:px-4 lg:px-6">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto w-full">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight px-2 break-words">
-            ETT LÅNELÖFTE DIREKT I HANDEN, UTAN TJAFS!
+            ETT BEVILJAT LÅN DIREKT I HANDEN, UTAN TJAFS!
           </h1>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto px-2">
-            🎯 Privatlån • Billån • Bolån - Vi fixar allt!
-            <span className="block mt-2"> ✅ Inget krav på kreditvärdighet • ⚡ Svar på 2 minuter</span>
+            💰 Privatlån • Billån • Bolån - Snabbt och enkelt!
+            <span className="block mt-2"> ✅ Direktsvar utan krångel • ⚡ Klart på 2 minuter</span>
           </p>
           <Button 
             onClick={scrollToForm}
             size="lg"
             className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-lg font-semibold w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
           >
-            🎯 FÅ DITT LÅNELÖFTE NU
+            💰 FÅ DITT BEVILJADE LÅN NU
           </Button>
         </div>
       </section>
@@ -264,9 +263,9 @@ const Index = () => {
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
                 <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" />
               </div>
-              <h3 className="text-base sm:text-lg font-bold mb-2">Lånelöfte utan UC</h3>
+              <h3 className="text-base sm:text-lg font-bold mb-2">Direktsvar utan UC</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Får ditt besked direkt utan att påverka kreditvärdigheten.
+                Få besked direkt utan att påverka kreditvärdigheten.
               </p>
             </div>
             <div className="text-center p-3 sm:p-4">
@@ -295,7 +294,7 @@ const Index = () => {
       <section className="py-8 sm:py-12 lg:py-16 bg-gray-50">
         <div className="container mx-auto px-3 sm:px-4 lg:px-6 text-center">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 max-w-3xl mx-auto leading-tight px-2">
-            🚀 Så enkelt får du ditt lånelöfte
+            🚀 Så enkelt får du ditt beviljade lån
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto">
             <div className="relative p-3 sm:p-4">
@@ -329,14 +328,14 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Loan Form Section with Bank Selector */}
+      {/* Loan Form Section */}
       <section id="loan-form" className="py-8 sm:py-12 lg:py-16 bg-white">
         <div className="container mx-auto px-3 sm:px-4 lg:px-6">
           <Card className="max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto shadow-xl">
             <CardContent className="p-4 sm:p-6 md:p-8">
               <ProgressSteps currentStep={currentStep} onBack={handleBack} />
               <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-4 sm:mb-6 leading-tight px-2">
-                🎯 Få ditt lånelöfte direkt
+                💰 Snabbt lån utan krångel - Klart på minuter!
               </h2>
               <form onSubmit={handleFormSubmit} className="space-y-3 sm:space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -518,7 +517,7 @@ const Index = () => {
                       BEARBETAR...
                     </>
                   ) : (
-                    "🎯 FÅ DITT LÅNELÖFTE NU"
+                    "💰 FÅ DITT BEVILJADE LÅN NU"
                   )}
                 </Button>
               </form>
