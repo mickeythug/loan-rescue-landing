@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -46,11 +47,14 @@ const MobileApp = ({
 
   const extendedValidationRules = {
     ...formValidationRules,
-    bank: (value: string) => {
-      if (!value || value.trim() === "") {
-        return "Vänligen välj din bank";
+    bank: {
+      required: true,
+      custom: (value: string) => {
+        if (!value || value.trim() === "") {
+          return "Vänligen välj din bank";
+        }
+        return null;
       }
-      return null;
     }
   };
 

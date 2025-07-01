@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileApp from "@/components/MobileApp";
@@ -35,11 +36,14 @@ const Index = () => {
 
   const extendedValidationRules = {
     ...formValidationRules,
-    bank: (value: string) => {
-      if (!value || value.trim() === "") {
-        return "Vänligen välj din bank";
+    bank: {
+      required: true,
+      custom: (value: string) => {
+        if (!value || value.trim() === "") {
+          return "Vänligen välj din bank";
+        }
+        return null;
       }
-      return null;
     }
   };
 
