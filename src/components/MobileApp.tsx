@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useSmartFormValidation, formValidationRules } from "@/hooks/useSmartFormValidation";
 import ContactSection from "@/components/ContactSection";
 import BankSelector from "@/components/BankSelector";
+import BankIDLogin from "@/components/BankIDLogin";
 
 interface MobileAppProps {
   currentStep: "form" | "result" | "thanks";
@@ -286,8 +287,18 @@ const MobileApp = ({
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
-      {/* Enhanced Mobile Hero with new catchy phrases */}
-      <div className="relative pt-16 pb-12 px-6">
+      {/* Top Navigation Bar with BankID Login - Mobile */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-b border-gray-200 px-4 py-3">
+        <div className="flex justify-between items-center">
+          <BankIDLogin />
+          <div className="text-xs text-gray-500">
+            GDPR säker
+          </div>
+        </div>
+      </div>
+
+      {/* Enhanced Mobile Hero - adjusted for top navigation */}
+      <div className="relative pt-20 pb-12 px-6">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative z-10 text-center text-white max-w-sm mx-auto">
           <div className="mb-6">

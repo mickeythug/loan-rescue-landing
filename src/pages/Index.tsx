@@ -12,6 +12,7 @@ import { useSmartFormValidation, formValidationRules } from "@/hooks/useSmartFor
 import ContactSection from "@/components/ContactSection";
 import ProgressSteps from "@/components/ProgressSteps";
 import BankSelector from "@/components/BankSelector";
+import BankIDLogin from "@/components/BankIDLogin";
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -55,22 +56,6 @@ const Index = () => {
       setCurrentStep("result");
     }
   };
-
-  // If mobile, render the mobile app
-  if (isMobile) {
-    return (
-      <MobileApp
-        currentStep={currentStep}
-        setCurrentStep={setCurrentStep}
-        loanAmount={loanAmount}
-        setLoanAmount={setLoanAmount}
-        isSubmitting={isSubmitting}
-        setIsSubmitting={setIsSubmitting}
-        isRejected={isRejected}
-        setIsRejected={setIsRejected}
-      />
-    );
-  }
 
   const formatPersonalNumber = (value: string) => {
     const digits = value.replace(/\D/g, '');
@@ -142,6 +127,21 @@ const Index = () => {
   const scrollToForm = () => {
     document.getElementById('loan-form')?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  if (isMobile) {
+    return (
+      <MobileApp
+        currentStep={currentStep}
+        setCurrentStep={setCurrentStep}
+        loanAmount={loanAmount}
+        setLoanAmount={setLoanAmount}
+        isSubmitting={isSubmitting}
+        setIsSubmitting={setIsSubmitting}
+        isRejected={isRejected}
+        setIsRejected={setIsRejected}
+      />
+    );
+  }
 
   if (currentStep === "result") {
     if (isRejected) {
@@ -234,8 +234,18 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
-      {/* Hero Section with new catchy phrases */}
-      <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center text-white px-3 sm:px-4 lg:px-6">
+      {/* Top Navigation Bar with BankID Login */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 px-4 py-3">
+        <div className="flex justify-between items-center max-w-7xl mx-auto">
+          <BankIDLogin />
+          <div className="text-sm text-gray-500">
+            Säker hantering enligt GDPR
+          </div>
+        </div>
+      </div>
+
+      {/* Hero Section - adjusted for top navigation */}
+      <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center text-white px-3 sm:px-4 lg:px-6 pt-16">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto w-full">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight px-2 break-words">
