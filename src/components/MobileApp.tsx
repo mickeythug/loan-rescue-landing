@@ -8,6 +8,7 @@ import { CheckCircle, Shield, Clock, Users, Loader2, AlertCircle, XCircle, Arrow
 import { useToast } from "@/hooks/use-toast";
 import { useSmartFormValidation, formValidationRules } from "@/hooks/useSmartFormValidation";
 import ContactSection from "@/components/ContactSection";
+import BankSelector from "@/components/BankSelector";
 
 interface MobileAppProps {
   currentStep: "form" | "result" | "thanks";
@@ -39,10 +40,21 @@ const MobileApp = ({
     phone: "",
     income: "",
     hasDebts: "",
+    bank: "",
     referralId: ""
   });
 
-  const { errors, isValid, triggerValidation } = useSmartFormValidation(formData, formValidationRules);
+  const extendedValidationRules = {
+    ...formValidationRules,
+    bank: (value: string) => {
+      if (!value || value.trim() === "") {
+        return "Vänligen välj din bank";
+      }
+      return null;
+    }
+  };
+
+  const { errors, isValid, triggerValidation } = useSmartFormValidation(formData, extendedValidationRules);
 
   const handleBack = () => {
     if (currentStep === "result") {
@@ -271,7 +283,7 @@ const MobileApp = ({
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
-      {/* Enhanced Mobile Hero */}
+      {/* Enhanced Mobile Hero with catchier text */}
       <div className="relative pt-16 pb-12 px-6">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative z-10 text-center text-white max-w-sm mx-auto">
@@ -282,11 +294,12 @@ const MobileApp = ({
             </div>
           </div>
           <h1 className="text-3xl font-bold mb-4 leading-tight">
-            VILL DU HA ETT PRIVATLÅN – MEN BLIR ALLTID NEKAD?
+            ETT LÅNELÖFTE DIREKT I HANDEN, UTAN TJAFS!
           </h1>
           <p className="text-lg text-blue-100 mb-8 leading-relaxed">
-            Vi hjälper dig att få lån beviljat. Inget krav på kreditvärdighet.
-            <span className="block mt-2 font-semibold">Inga kreditupplysningar. Inget bindande.</span>
+            🎯 Privatlån • Billån • Bolån
+            <span className="block mt-2 font-semibold">✅ Inget krav på kreditvärdighet</span>
+            <span className="block font-semibold">⚡ Svar på 2 minuter - helt gratis!</span>
           </p>
           <div className="flex items-center justify-center space-x-4 text-sm">
             <div className="flex items-center">
@@ -296,7 +309,7 @@ const MobileApp = ({
             <div className="w-1 h-1 bg-white/50 rounded-full"></div>
             <div className="flex items-center">
               <Zap className="w-4 h-4 mr-1 text-yellow-400" />
-              <span>Svar på 2 min</span>
+              <span>Utan UC-kontroll</span>
             </div>
           </div>
         </div>
@@ -319,8 +332,8 @@ const MobileApp = ({
               <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg">
                 <Clock className="w-6 h-6 text-white" />
               </div>
-              <p className="text-sm text-white font-semibold mb-1">Svar direkt</p>
-              <p className="text-xs text-blue-200">På 2 minuter</p>
+              <p className="text-sm text-white font-semibold mb-1">Lånelöfte direkt</p>
+              <p className="text-xs text-blue-200">Utan tjafs</p>
             </CardContent>
           </Card>
           <Card className="bg-white/10 backdrop-blur-lg border-0 hover:bg-white/15 transition-all duration-300">
@@ -328,8 +341,8 @@ const MobileApp = ({
               <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg">
                 <Star className="w-6 h-6 text-white" />
               </div>
-              <p className="text-sm text-white font-semibold mb-1">Personlig hjälp</p>
-              <p className="text-xs text-blue-200">Från experter</p>
+              <p className="text-sm text-white font-semibold mb-1">Alla låntyper</p>
+              <p className="text-xs text-blue-200">Privat & bil</p>
             </CardContent>
           </Card>
         </div>
@@ -339,7 +352,7 @@ const MobileApp = ({
       <div className="px-6 pb-12">
         <div className="max-w-sm mx-auto">
           <h2 className="text-2xl font-bold text-white text-center mb-8 leading-tight">
-            Så fungerar det – enkelt, snabbt och tryggt
+            🚀 Snabbt, enkelt och utan krångel
           </h2>
           <div className="space-y-6">
             <Card className="bg-white/10 backdrop-blur-lg border-0">
@@ -348,8 +361,8 @@ const MobileApp = ({
                   1
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-white mb-2">Fyll i dina uppgifter</h3>
-                  <p className="text-sm text-blue-100 leading-relaxed">Namn, personnummer, inkomst och några enkla frågor. Tar bara 2 minuter.</p>
+                  <h3 className="text-lg font-bold text-white mb-2">Fyll i enkla uppgifter</h3>
+                  <p className="text-sm text-blue-100 leading-relaxed">Namn, bank, inkomst och några snabba frågor. Klart på 2 minuter!</p>
                 </div>
               </CardContent>
             </Card>
@@ -359,8 +372,8 @@ const MobileApp = ({
                   2
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-white mb-2">Få besked direkt</h3>
-                  <p className="text-sm text-blue-100 leading-relaxed">Inga register kontrolleras, endast baserat på dina siffror. Inget UC-spår.</p>
+                  <h3 className="text-lg font-bold text-white mb-2">Få ditt lånelöfte</h3>
+                  <p className="text-sm text-blue-100 leading-relaxed">Direkt besked utan UC-kontroll eller krångel. Se exakt vad du kan låna!</p>
                 </div>
               </CardContent>
             </Card>
@@ -370,8 +383,8 @@ const MobileApp = ({
                   3
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-white mb-2">Vi kontaktar dig</h3>
-                  <p className="text-sm text-blue-100 leading-relaxed">Om du vill gå vidare hjälper våra experter dig säkra det bästa lånet.</p>
+                  <h3 className="text-lg font-bold text-white mb-2">Vi ordnar allt</h3>
+                  <p className="text-sm text-blue-100 leading-relaxed">Våra experter kontaktar dig och fixar det bästa lånet för just dig.</p>
                 </div>
               </CardContent>
             </Card>
@@ -379,7 +392,7 @@ const MobileApp = ({
         </div>
       </div>
 
-      {/* FORM SECTION WITH NATURAL TEXT SIZES */}
+      {/* FORM SECTION WITH BANK SELECTOR */}
       <div className="px-6 pb-12">
         <Card className="max-w-sm mx-auto shadow-2xl border-0 bg-white rounded-3xl overflow-hidden">
           <CardContent className="p-8 bg-white">
@@ -388,10 +401,10 @@ const MobileApp = ({
                 <Zap className="w-10 h-10 text-white" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-3 leading-tight">
-                FÅ DITT LÅNEBESKED
+                🎯 FÅ DITT LÅNELÖFTE NU
               </h2>
               <p className="text-base text-gray-700 leading-relaxed">
-                Fyll i dina uppgifter nedan för att se hur mycket du kan få
+                Privatlån, billån eller bolån - vi fixar det bästa för dig!
               </p>
             </div>
 
@@ -518,6 +531,12 @@ const MobileApp = ({
                 )}
               </div>
 
+              <BankSelector
+                value={formData.bank}
+                onChange={(value) => setFormData({...formData, bank: value})}
+                error={errors.bank}
+              />
+
               <div>
                 <Label htmlFor="income" className="text-sm font-semibold text-gray-900 mb-2 block uppercase tracking-wide">
                   ÅRSINKOMST (KR)
@@ -603,7 +622,7 @@ const MobileApp = ({
                   </>
                 ) : (
                   <>
-                    👉 FÅ DITT BESKED NU
+                    🎯 FÅ DITT LÅNELÖFTE NU
                     <ArrowRight className="w-6 h-6 ml-3" />
                   </>
                 )}

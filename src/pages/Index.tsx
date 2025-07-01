@@ -11,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useSmartFormValidation, formValidationRules } from "@/hooks/useSmartFormValidation";
 import ContactSection from "@/components/ContactSection";
 import ProgressSteps from "@/components/ProgressSteps";
+import BankSelector from "@/components/BankSelector";
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -28,10 +29,21 @@ const Index = () => {
     phone: "",
     income: "",
     hasDebts: "",
+    bank: "",
     referralId: ""
   });
 
-  const { errors, isValid, triggerValidation } = useSmartFormValidation(formData, formValidationRules);
+  const extendedValidationRules = {
+    ...formValidationRules,
+    bank: (value: string) => {
+      if (!value || value.trim() === "") {
+        return "Vänligen välj din bank";
+      }
+      return null;
+    }
+  };
+
+  const { errors, isValid, triggerValidation } = useSmartFormValidation(formData, extendedValidationRules);
 
   const handleBack = () => {
     if (currentStep === "result") {
@@ -163,14 +175,14 @@ const Index = () => {
                 <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" />
               </div>
               <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-900 mb-3 px-1 leading-tight">
-                Gratis! Du kan få upp till:
+                Fantastiskt! Du kan få upp till:
               </h1>
               <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-600 mb-3 break-all">
                 {loanAmount.toLocaleString('sv-SE')} kr
               </div>
               <p className="text-sm sm:text-base text-slate-600 mb-4 px-1 leading-relaxed">
-                Detta är en uppskattning baserad på dina uppgifter.
-                <span className="block mt-2"> Vill du gå vidare och få hjälp att säkra lånet?</span>
+                Detta är ett lånelöfte baserat på dina uppgifter.
+                <span className="block mt-2"> Vill du gå vidare och säkra ditt lån?</span>
               </p>
             </div>
             <Button 
@@ -219,28 +231,28 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
-      {/* Hero Section */}
+      {/* Hero Section with updated catchy text */}
       <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center text-white px-3 sm:px-4 lg:px-6">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto w-full">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight px-2 break-words">
-            VILL DU HA ETT PRIVATLÅN – MEN BLIR ALLTID NEKAD?
+            ETT LÅNELÖFTE DIREKT I HANDEN, UTAN TJAFS!
           </h1>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto px-2">
-            Vi hjälper dig att få lån beviljat. Inget krav på kreditvärdighet.
-            <span className="block mt-2"> Inga kreditupplysningar. Inget bindande.</span>
+            🎯 Privatlån • Billån • Bolån - Vi fixar allt!
+            <span className="block mt-2"> ✅ Inget krav på kreditvärdighet • ⚡ Svar på 2 minuter</span>
           </p>
           <Button 
             onClick={scrollToForm}
             size="lg"
             className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-lg font-semibold w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
           >
-            👉 FÅ DITT BESKED NU
+            🎯 FÅ DITT LÅNELÖFTE NU
           </Button>
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Benefits Section with updated text */}
       <section className="py-8 sm:py-12 lg:py-16 bg-gray-50">
         <div className="container mx-auto px-3 sm:px-4 lg:px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
@@ -248,27 +260,27 @@ const Index = () => {
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
                 <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" />
               </div>
-              <h3 className="text-base sm:text-lg font-bold mb-2">Inga kreditupplysningar</h3>
+              <h3 className="text-base sm:text-lg font-bold mb-2">Lånelöfte utan UC</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Ditt besked påverkar inte din kreditvärdighet.
+                Får ditt besked direkt utan att påverka kreditvärdigheten.
               </p>
             </div>
             <div className="text-center p-3 sm:p-4">
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
                 <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />
               </div>
-              <h3 className="text-base sm:text-lg font-bold mb-2">Svar direkt – gratis</h3>
+              <h3 className="text-base sm:text-lg font-bold mb-2">Alla låntyper</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Du får veta direkt hur mycket du kan få beviljat.
+                Privatlån, billån, bolån - vi fixar det bästa för dig.
               </p>
             </div>
             <div className="text-center p-3 sm:p-4 md:col-span-1">
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
                 <Users className="w-5 h-5 sm:w-6 sm:h-6 text-orange-600" />
               </div>
-              <h3 className="text-base sm:text-lg font-bold mb-2">Personlig rådgivning</h3>
+              <h3 className="text-base sm:text-lg font-bold mb-2">Utan tjafs</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Våra experter kontaktar dig om du vill gå vidare.
+                Enkelt, snabbt och helt utan krångel eller bindning.
               </p>
             </div>
           </div>
@@ -279,48 +291,48 @@ const Index = () => {
       <section className="py-8 sm:py-12 lg:py-16 bg-gray-50">
         <div className="container mx-auto px-3 sm:px-4 lg:px-6 text-center">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 max-w-3xl mx-auto leading-tight px-2">
-            Så fungerar det – enkelt, snabbt och tryggt
+            🚀 Så enkelt får du ditt lånelöfte
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto">
             <div className="relative p-3 sm:p-4">
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 text-sm sm:text-lg font-bold">
                 1
               </div>
-              <h3 className="text-base sm:text-lg font-bold mb-2">Fyll i dina uppgifter</h3>
+              <h3 className="text-base sm:text-lg font-bold mb-2">Fyll i enkla uppgifter</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Namn, personnummer, inkomst etc.
+                Namn, bank, inkomst och några snabba frågor.
               </p>
             </div>
             <div className="relative p-3 sm:p-4">
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 text-sm sm:text-lg font-bold">
                 2
               </div>
-              <h3 className="text-base sm:text-lg font-bold mb-2">Få besked direkt</h3>
+              <h3 className="text-base sm:text-lg font-bold mb-2">Få ditt lånelöfte</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Inga register kontrolleras, bara baserat på dina siffror.
+                Direkt besked utan UC-kontroll eller krångel.
               </p>
             </div>
             <div className="relative p-3 sm:p-4">
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 text-sm sm:text-lg font-bold">
                 3
               </div>
-              <h3 className="text-base sm:text-lg font-bold mb-2">Vi kontaktar dig</h3>
+              <h3 className="text-base sm:text-lg font-bold mb-2">Vi ordnar allt</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Om du vill gå vidare hjälper vi dig säkra lånet.
+                Våra experter fixar det bästa lånet för dig.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Loan Form Section */}
+      {/* Loan Form Section with Bank Selector */}
       <section id="loan-form" className="py-8 sm:py-12 lg:py-16 bg-white">
         <div className="container mx-auto px-3 sm:px-4 lg:px-6">
           <Card className="max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto shadow-xl">
             <CardContent className="p-4 sm:p-6 md:p-8">
               <ProgressSteps currentStep={currentStep} onBack={handleBack} />
               <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-4 sm:mb-6 leading-tight px-2">
-                Få ditt preliminära lånebesked
+                🎯 Få ditt lånelöfte direkt
               </h2>
               <form onSubmit={handleFormSubmit} className="space-y-3 sm:space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -422,6 +434,12 @@ const Index = () => {
                   )}
                 </div>
 
+                <BankSelector
+                  value={formData.bank}
+                  onChange={(value) => setFormData({...formData, bank: value})}
+                  error={errors.bank}
+                />
+
                 <div>
                   <Label htmlFor="income" className="text-sm font-medium">Årsinkomst före skatt (kr)</Label>
                   <Input
@@ -496,7 +514,7 @@ const Index = () => {
                       BEARBETAR...
                     </>
                   ) : (
-                    "👉 VISA HUR MYCKET JAG KAN FÅ"
+                    "🎯 FÅ DITT LÅNELÖFTE NU"
                   )}
                 </Button>
               </form>
