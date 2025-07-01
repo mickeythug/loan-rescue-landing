@@ -1,21 +1,20 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { CheckCircle, Shield, Clock, Users, Loader2, AlertCircle } from "lucide-react";
+import { CheckCircle, Shield, Clock, Users, Loader2, AlertCircle, XCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useFormValidation, formValidationRules } from "@/hooks/useFormValidation";
 import ContactSection from "@/components/ContactSection";
 import ProgressSteps from "@/components/ProgressSteps";
-import LoanCalculator from "@/components/LoanCalculator";
 
 const Index = () => {
   const [currentStep, setCurrentStep] = useState<"form" | "result" | "thanks">("form");
-  const [loanAmount, setLoanAmount] = useState(95000);
+  const [loanAmount, setLoanAmount] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isRejected, setIsRejected] = useState(false);
   const { toast } = useToast();
 
   const [formData, setFormData] = useState({
@@ -46,14 +45,29 @@ const Index = () => {
     
     // Simulera API-anrop
     await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // Beräkna lånebelopp baserad på inkomst och skulder
+
+    // Kontrollera skulder först
+    if (formData.hasDebts === "yes") {
+      setIsRejected(true);
+      setIsSubmitting(false);
+      setCurrentStep("result");
+      return;
+    }
+
+    // Beräkna lånebelopp baserat på inkomst
     const income = parseInt(formData.income);
-    const baseAmount = income * 3;
-    const debtPenalty = formData.hasDebts === "yes" ? 0.3 : 0;
-    const calculatedAmount = Math.min(Math.max(baseAmount * (1 - debtPenalty), 30000), 500000);
+    let calculatedAmount = 0;
+
+    if (income >= 300000) {
+      calculatedAmount = Math.min(600000 + Math.floor(Math.random() * 100000), 600000);
+    } else if (income >= 200000) {
+      calculatedAmount = Math.min(400000 + Math.floor(Math.random() * 50000), 500000);
+    } else {
+      calculatedAmount = Math.min(200000 + Math.floor(Math.random() * 50000), 300000);
+    }
     
-    setLoanAmount(Math.round(calculatedAmount));
+    setLoanAmount(calculatedAmount);
+    setIsRejected(false);
     setIsSubmitting(false);
     setCurrentStep("result");
   };
@@ -71,19 +85,49 @@ const Index = () => {
   };
 
   if (currentStep === "result") {
+    if (isRejected) {
+      return (
+        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-red-900 to-slate-900 flex items-center justify-center p-4 sm:p-6 lg:p-8 animate-fade-in">
+          <Card className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl shadow-2xl animate-scale-in">
+            <CardContent className="p-4 sm:p-6 md:p-8 text-center">
+              <ProgressSteps currentStep={currentStep} />
+              <div className="mb-4 sm:mb-6">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <XCircle className="w-8 h-8 sm:w-10 sm:h-10 text-red-600" />
+                </div>
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-2 px-2">
+                  Tyvärr kan vi inte hjälpa dig just nu
+                </h1>
+                <p className="text-base sm:text-lg text-slate-600 mb-4 sm:mb-6 px-2 leading-relaxed">
+                  På grund av befintliga skulder hos Kronofogden kan vi tyvärr inte erbjuda dig ett lån för tillfället.<br className="hidden sm:block" />
+                  <span className="block sm:inline"> Vi rekommenderar att du kontaktar en skuldrådgivare för hjälp.</span>
+                </p>
+              </div>
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 sm:p-4">
+                <p className="text-blue-800 font-medium text-sm sm:text-base leading-relaxed">
+                  📞 Gratis skuldrådgivning: 0200-22 22 22<br />
+                  💬 Eller chatta med oss för mer information
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      );
+    }
+
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center p-4 sm:p-6 lg:p-8 animate-fade-in">
         <Card className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl shadow-2xl animate-scale-in">
           <CardContent className="p-4 sm:p-6 md:p-8 text-center">
             <ProgressSteps currentStep={currentStep} />
             <div className="mb-4 sm:mb-6">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 animate-pulse">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-green-600" />
               </div>
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-2 px-2">
-                Du kan preliminärt beviljas:
+                Gratis! Du kan få upp till:
               </h1>
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-600 mb-3 sm:mb-4 animate-bounce">
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-600 mb-3 sm:mb-4">
                 {loanAmount.toLocaleString('sv-SE')} kr
               </div>
               <p className="text-base sm:text-lg text-slate-600 mb-4 sm:mb-6 px-2 leading-relaxed">
@@ -111,7 +155,7 @@ const Index = () => {
           <CardContent className="p-4 sm:p-6 md:p-8 text-center">
             <ProgressSteps currentStep={currentStep} />
             <div className="mb-4 sm:mb-6">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 animate-pulse">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <Users className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />
               </div>
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-3 sm:mb-4 px-2">
@@ -151,7 +195,7 @@ const Index = () => {
           <Button 
             onClick={scrollToForm}
             size="lg"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-4 sm:py-6 text-lg sm:text-xl font-semibold transition-all duration-300 hover:scale-105 w-full sm:w-auto animate-pulse"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-4 sm:py-6 text-lg sm:text-xl font-semibold transition-all duration-300 hover:scale-105 w-full sm:w-auto"
           >
             👉 FÅ DITT BESKED NU
           </Button>
@@ -190,21 +234,6 @@ const Index = () => {
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Loan Calculator Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 animate-fade-in">
-              Beräkna ditt lån
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in">
-              Använd vår interaktiva kalkylator för att se vad du kan låna baserat på din ekonomiska situation.
-            </p>
-          </div>
-          <LoanCalculator onAmountChange={setLoanAmount} />
         </div>
       </section>
 

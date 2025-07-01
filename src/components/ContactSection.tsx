@@ -1,8 +1,14 @@
 
-import { Phone, Mail, Clock, MapPin } from "lucide-react";
+import { MessageCircle, Mail, Clock, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const ContactSection = () => {
+  const handleLiveChat = () => {
+    // Här kan du integrera med din live chat-tjänst
+    console.log("Starta live chat");
+  };
+
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-slate-900 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,11 +25,16 @@ const ContactSection = () => {
           <Card className="bg-slate-800 border-slate-700 hover:bg-slate-700 transition-all duration-300 hover:scale-105">
             <CardContent className="p-6 text-center">
               <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Phone className="w-6 h-6 text-white" />
+                <MessageCircle className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 text-white">Telefon</h3>
-              <p className="text-blue-400 font-medium">08-123 45 67</p>
-              <p className="text-slate-400 text-sm mt-1">Vardagar 8-17</p>
+              <h3 className="text-lg font-semibold mb-2 text-white">Live Chat</h3>
+              <Button 
+                onClick={handleLiveChat}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-medium"
+              >
+                Starta Chat
+              </Button>
+              <p className="text-slate-400 text-sm mt-1">Direktsvar online</p>
             </CardContent>
           </Card>
 
