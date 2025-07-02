@@ -319,12 +319,12 @@ const MobileApp = ({
             </div>
           </div>
           <h1 className="text-3xl font-bold mb-4 leading-tight">
-            DITT DRÖMBELOPP GODKÄNT DIREKT!
+            ÄR DU TRÖTT PÅ ATT FÅ DINA LÅN NEKADE? VI HJÄLPER DIG ATT FÅ DET BEVILJAT UTAN TJAFS!
           </h1>
           <p className="text-lg text-blue-100 mb-8 leading-relaxed">
             Privatlån • Billån • Bolån
-            <span className="block mt-2 font-semibold">✅ Direktsvar utan krångel</span>
-            <span className="block font-semibold">⚡ Snabbt, enkelt och gratis!</span>
+            <span className="block mt-2 font-semibold">Direktsvar utan krångel</span>
+            <span className="block font-semibold">Snabbt, enkelt och gratis!</span>
           </p>
           <div className="flex items-center justify-center space-x-4 text-sm">
             <div className="flex items-center">
