@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileApp from "@/components/MobileApp";
@@ -287,7 +288,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto w-full">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight px-2 break-words">
-            ÄR DU TRÖTT PÅ ATT FÅ DINA LÅN NEKADE? VI HJÄLPER DIG ATT FÅ DET BEVILJAT UTAN TJAFS!
+            Är du trött på att slösa tid på avslag? Vi får det gjort – utan snack.
           </h1>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto px-2">
             Privatlån • Billån • Bolån - Snabbt och enkelt!

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -319,7 +320,7 @@ const MobileApp = ({
             </div>
           </div>
           <h1 className="text-3xl font-bold mb-4 leading-tight">
-            ÄR DU TRÖTT PÅ ATT FÅ DINA LÅN NEKADE? VI HJÄLPER DIG ATT FÅ DET BEVILJAT UTAN TJAFS!
+            Är du trött på att slösa tid på avslag? Vi får det gjort – utan snack.
           </h1>
           <p className="text-lg text-blue-100 mb-8 leading-relaxed">
             Privatlån • Billån • Bolån
