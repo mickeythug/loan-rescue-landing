@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { CreditCard, Loader2, CheckCircle, Smartphone } from "lucide-react";
+import { CreditCard, Loader2, CheckCircle, Smartphone, QrCode } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -11,6 +11,7 @@ import BankSelector from "./BankSelector";
 const BankIDLogin = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [showQRCode, setShowQRCode] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [personalNumber, setPersonalNumber] = useState("");
   const [selectedBank, setSelectedBank] = useState("");
@@ -21,19 +22,32 @@ const BankIDLogin = () => {
     
     setIsLoading(true);
     
-    // Simulate BankID authentication process
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    // Simulate generating QR code
+    await new Promise(resolve => setTimeout(resolve, 1500));
     
     setIsLoading(false);
-    setIsAuthenticated(true);
+    setShowQRCode(true);
     
-    // Close dialog after successful authentication
-    setTimeout(() => {
-      setIsOpen(false);
-      setIsAuthenticated(false);
-      setPersonalNumber("");
-      setSelectedBank("");
-    }, 2000);
+    // Simulate waiting for QR code scan and authentication
+    setTimeout(async () => {
+      setShowQRCode(false);
+      setIsLoading(true);
+      
+      // Simulate authentication process
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      setIsLoading(false);
+      setIsAuthenticated(true);
+      
+      // Close dialog after successful authentication
+      setTimeout(() => {
+        setIsOpen(false);
+        setIsAuthenticated(false);
+        setShowQRCode(false);
+        setPersonalNumber("");
+        setSelectedBank("");
+      }, 2000);
+    }, 8000); // Show QR code for 8 seconds
   };
 
   const formatPersonalNumber = (value: string) => {
@@ -54,6 +68,23 @@ const BankIDLogin = () => {
   };
 
   const isFormValid = personalNumber.trim() && selectedBank.trim();
+
+  // Generate a mock QR code pattern
+  const generateQRPattern = () => {
+    const size = 21; // Standard QR code size
+    const pattern = [];
+    for (let i = 0; i < size; i++) {
+      pattern[i] = [];
+      for (let j = 0; j < size; j++) {
+        // Create a pseudo-random pattern that looks like a QR code
+        const seed = (i * size + j + personalNumber.length) % 100;
+        pattern[i][j] = seed > 50;
+      }
+    }
+    return pattern;
+  };
+
+  const qrPattern = generateQRPattern();
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -82,7 +113,7 @@ const BankIDLogin = () => {
         </DialogHeader>
         
         <div className="flex flex-col space-y-6 py-4">
-          {!isLoading && !isAuthenticated && (
+          {!isLoading && !showQRCode && !isAuthenticated && (
             <>
               <div className="space-y-4">
                 <BankSelector
@@ -127,8 +158,8 @@ const BankIDLogin = () => {
               </Button>
             </>
           )}
-          
-          {isLoading && (
+
+          {isLoading && !showQRCode && (
             <>
               <div className="flex flex-col items-center space-y-4 py-8">
                 <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center">
@@ -136,10 +167,76 @@ const BankIDLogin = () => {
                 </div>
                 <div className="text-center space-y-2">
                   <p className="text-gray-900 font-semibold">
-                    Väntar på BankID...
+                    Förbereder inloggning...
                   </p>
                   <p className="text-sm text-gray-600">
-                    Öppna din BankID-app och följ instruktionerna
+                    Genererar QR-kod för säker inloggning
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
+
+          {showQRCode && (
+            <>
+              <div className="flex flex-col items-center space-y-4 py-6">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                  <QrCode className="w-8 h-8 text-blue-600" />
+                </div>
+                
+                <div className="text-center space-y-2 mb-6">
+                  <p className="text-gray-900 font-semibold text-lg">
+                    Skanna QR-koden
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Öppna BankID-appen på din mobil och skanna koden nedan
+                  </p>
+                </div>
+
+                {/* QR Code Display */}
+                <div className="bg-white p-4 rounded-lg border-2 border-gray-300 shadow-lg">
+                  <div className="grid grid-cols-21 gap-px bg-black p-2 rounded" style={{ gridTemplateColumns: 'repeat(21, 1fr)' }}>
+                    {qrPattern.map((row, i) =>
+                      row.map((cell, j) => (
+                        <div
+                          key={`${i}-${j}`}
+                          className={`w-2 h-2 ${cell ? 'bg-black' : 'bg-white'}`}
+                        />
+                      ))
+                    )}
+                  </div>
+                </div>
+
+                <div className="text-center space-y-2 mt-4">
+                  <p className="text-xs text-gray-500">
+                    1. Öppna BankID-appen på din mobil
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    2. Tryck på "Skanna QR-kod"
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    3. Rikta kameran mot QR-koden ovan
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    4. Signera med din PIN-kod eller biometri
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
+          
+          {isLoading && showQRCode === false && !isAuthenticated && (
+            <>
+              <div className="flex flex-col items-center space-y-4 py-8">
+                <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center">
+                  <Loader2 className="w-8 h-8 text-teal-600 animate-spin" />
+                </div>
+                <div className="text-center space-y-2">
+                  <p className="text-gray-900 font-semibold">
+                    Väntar på signering...
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Signera i din BankID-app för att slutföra inloggningen
                   </p>
                 </div>
               </div>
