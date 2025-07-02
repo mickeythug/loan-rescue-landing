@@ -11,6 +11,7 @@ import ContactSection from "@/components/ContactSection";
 import BankSelector from "@/components/BankSelector";
 import BankIDLogin from "@/components/BankIDLogin";
 import ReCAPTCHA from "react-google-recaptcha";
+import RotatingText from "@/components/RotatingText";
 
 interface MobileAppProps {
   currentStep: "form" | "result" | "thanks";
@@ -318,9 +319,7 @@ const MobileApp = ({
               <span className="text-sm font-medium">Betrodd av 10,000+ kunder</span>
             </div>
           </div>
-          <h1 className="text-3xl font-bold mb-4 leading-tight">
-            Är du trött på att slösa tid på avslag? Vi får det gjort – utan snack.
-          </h1>
+          <RotatingText className="text-3xl font-bold mb-4 leading-tight" />
           <p className="text-lg text-blue-100 mb-8 leading-relaxed">
             Privatlån • Billån • Bolån
             <span className="block mt-2 font-semibold">Direktsvar utan krångel</span>

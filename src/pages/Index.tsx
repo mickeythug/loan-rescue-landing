@@ -15,6 +15,7 @@ import BankSelector from "@/components/BankSelector";
 import BankIDLogin from "@/components/BankIDLogin";
 import { Link } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
+import RotatingText from "@/components/RotatingText";
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -286,9 +287,7 @@ const Index = () => {
       <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center text-white px-3 sm:px-4 lg:px-6 pt-16">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto w-full">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight px-2 break-words">
-            Är du trött på att slösa tid på avslag? Vi får det gjort – utan snack.
-          </h1>
+          <RotatingText className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight px-2 break-words" />
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto px-2">
             Privatlån • Billån • Bolån - Snabbt och enkelt!
             <span className="block mt-2"> Direktsvar utan UC-kontroll • Klart på 2 minuter</span>
