@@ -21,17 +21,11 @@ const BankIDLogin = () => {
     if (!personalNumber.trim() || !selectedBank.trim()) return;
     
     setIsLoading(true);
-    
-    // Simulate generating QR code
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsLoading(false);
     setShowQRCode(true);
     
     // Simulate waiting for QR code scan and authentication
     setTimeout(async () => {
       setShowQRCode(false);
-      setIsLoading(true);
       
       // Simulate authentication process
       await new Promise(resolve => setTimeout(resolve, 2000));
@@ -159,24 +153,6 @@ const BankIDLogin = () => {
             </>
           )}
 
-          {isLoading && !showQRCode && (
-            <>
-              <div className="flex flex-col items-center space-y-4 py-8">
-                <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center">
-                  <Loader2 className="w-8 h-8 text-teal-600 animate-spin" />
-                </div>
-                <div className="text-center space-y-2">
-                  <p className="text-gray-900 font-semibold">
-                    Förbereder inloggning...
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    Genererar QR-kod för säker inloggning
-                  </p>
-                </div>
-              </div>
-            </>
-          )}
-
           {showQRCode && (
             <>
               <div className="flex flex-col items-center space-y-4 py-6">
@@ -225,7 +201,7 @@ const BankIDLogin = () => {
             </>
           )}
           
-          {isLoading && showQRCode === false && !isAuthenticated && (
+          {isLoading && !showQRCode && (
             <>
               <div className="flex flex-col items-center space-y-4 py-8">
                 <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center">
