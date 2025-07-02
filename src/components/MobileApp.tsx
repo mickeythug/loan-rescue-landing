@@ -10,6 +10,7 @@ import { useSmartFormValidation, formValidationRules } from "@/hooks/useSmartFor
 import ContactSection from "@/components/ContactSection";
 import BankSelector from "@/components/BankSelector";
 import BankIDLogin from "@/components/BankIDLogin";
+import ReCAPTCHA from "react-google-recaptcha";
 
 interface MobileAppProps {
   currentStep: "form" | "result" | "thanks";
@@ -33,6 +34,7 @@ const MobileApp = ({
   setIsRejected 
 }: MobileAppProps) => {
   const { toast } = useToast();
+  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -92,6 +94,15 @@ const MobileApp = ({
       toast({
         title: "Kontrollera formuläret",
         description: "Vänligen rätta till felen innan du fortsätter.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    if (!captchaValue) {
+      toast({
+        title: "Captcha krävs",
+        description: "Vänligen slutför captcha-verifieringen.",
         variant: "destructive"
       });
       return;
@@ -311,7 +322,7 @@ const MobileApp = ({
             DITT DRÖMBELOPP GODKÄNT DIREKT!
           </h1>
           <p className="text-lg text-blue-100 mb-8 leading-relaxed">
-            💰 Privatlån • Billån • Bolån
+            Privatlån • Billån • Bolån
             <span className="block mt-2 font-semibold">✅ Direktsvar utan krångel</span>
             <span className="block font-semibold">⚡ Snabbt, enkelt och gratis!</span>
           </p>
@@ -346,7 +357,7 @@ const MobileApp = ({
               <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg">
                 <Clock className="w-6 h-6 text-white" />
               </div>
-              <p className="text-sm text-white font-semibold mb-1">Lånelöfte direkt</p>
+              <p className="text-sm text-white font-semibold mb-1">Bedömning direkt</p>
               <p className="text-xs text-blue-200">Utan tjafs</p>
             </CardContent>
           </Card>
@@ -366,7 +377,7 @@ const MobileApp = ({
       <div className="px-6 pb-12">
         <div className="max-w-sm mx-auto">
           <h2 className="text-2xl font-bold text-white text-center mb-8 leading-tight">
-            🚀 Snabbt, enkelt och utan krångel
+            Snabbt, enkelt och utan krångel
           </h2>
           <div className="space-y-6">
             <Card className="bg-white/10 backdrop-blur-lg border-0">
@@ -386,7 +397,7 @@ const MobileApp = ({
                   2
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-white mb-2">Få ditt lånelöfte</h3>
+                  <h3 className="text-lg font-bold text-white mb-2">Få din preliminära bedömning</h3>
                   <p className="text-sm text-blue-100 leading-relaxed">Direkt besked utan UC-kontroll eller krångel. Se exakt vad du kan låna!</p>
                 </div>
               </CardContent>
@@ -415,7 +426,7 @@ const MobileApp = ({
                 <Zap className="w-10 h-10 text-white" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-3 leading-tight">
-                💰 LÅNET I FICKAN DIREKT!
+                LÅNET I FICKAN DIREKT!
               </h2>
               <p className="text-base text-gray-700 leading-relaxed">
                 Privatlån, billån eller bolån - vi fixar det bästa för dig!
@@ -612,11 +623,18 @@ const MobileApp = ({
                 </p>
               </div>
 
+              <div className="flex justify-center">
+                <ReCAPTCHA
+                  sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                  onChange={setCaptchaValue}
+                />
+              </div>
+
               <div className="bg-gradient-to-r from-emerald-50 to-green-50 border-2 border-green-300 rounded-xl p-6 shadow-lg">
                 <div className="flex items-start">
                   <Lock className="w-6 h-6 text-green-600 mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <p className="text-base font-bold text-green-800 mb-2">🔒 TRYGG HANTERING</p>
+                    <p className="text-base font-bold text-green-800 mb-2">TRYGG HANTERING</p>
                     <p className="text-sm text-green-700 leading-relaxed">
                       Dina uppgifter behandlas enligt GDPR och krypteras säkert. Ingen kreditupplysning görs.
                     </p>
@@ -636,7 +654,7 @@ const MobileApp = ({
                   </>
                 ) : (
                   <>
-                    💰 FÅ DITT BEVILJADE LÅN NU
+                    FÅ DITT BEVILJADE LÅN NU
                     <ArrowRight className="w-6 h-6 ml-3" />
                   </>
                 )}
@@ -644,7 +662,7 @@ const MobileApp = ({
               
               <div className="text-center">
                 <p className="text-base text-gray-900 font-bold">
-                  ⚡ GENOMSNITTLIG SVARSTID: 2 MINUTER
+                  GENOMSNITTLIG SVARSTID: 2 MINUTER
                 </p>
               </div>
             </form>

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileApp from "@/components/MobileApp";
@@ -15,6 +14,7 @@ import ProgressSteps from "@/components/ProgressSteps";
 import BankSelector from "@/components/BankSelector";
 import BankIDLogin from "@/components/BankIDLogin";
 import { Link } from "react-router-dom";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -22,6 +22,7 @@ const Index = () => {
   const [loanAmount, setLoanAmount] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isRejected, setIsRejected] = useState(false);
+  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
   const { toast } = useToast();
 
   const [formData, setFormData] = useState({
@@ -85,6 +86,15 @@ const Index = () => {
       toast({
         title: "Kontrollera formuläret",
         description: "Vänligen rätta till felen innan du fortsätter.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    if (!captchaValue) {
+      toast({
+        title: "Captcha krävs",
+        description: "Vänligen slutför captcha-verifieringen.",
         variant: "destructive"
       });
       return;
@@ -186,7 +196,7 @@ const Index = () => {
                 {loanAmount.toLocaleString('sv-SE')} kr
               </div>
               <p className="text-sm sm:text-base text-slate-600 mb-4 px-1 leading-relaxed">
-                Detta är ett lånelöfte baserat på dina uppgifter.
+                Detta är en preliminär bedömning baserad på dina uppgifter.
                 <span className="block mt-2"> Vill du gå vidare och säkra ditt lån?</span>
               </p>
             </div>
@@ -195,7 +205,7 @@ const Index = () => {
               size="lg"
               className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-semibold"
             >
-              👉 JA – JAG VILL GÅ VIDARE
+              JA – JAG VILL GÅ VIDARE
             </Button>
           </CardContent>
         </Card>
@@ -280,7 +290,7 @@ const Index = () => {
             ETT BEVILJAT LÅN DIREKT I HANDEN, UTAN TJAFS!
           </h1>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto px-2">
-            💰 Privatlån • Billån • Bolån - Snabbt och enkelt!
+            Privatlån • Billån • Bolån - Snabbt och enkelt!
             <span className="block mt-2"> ✅ Direktsvar utan UC-kontroll • ⚡ Klart på 2 minuter</span>
           </p>
           <Button 
@@ -288,7 +298,7 @@ const Index = () => {
             size="lg"
             className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-lg font-semibold w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
           >
-            💰 Ta reda på hur mycket du kan låna NU.
+            Ta reda på hur mycket du kan låna NU
           </Button>
         </div>
       </section>
@@ -332,7 +342,7 @@ const Index = () => {
       <section className="py-8 sm:py-12 lg:py-16 bg-gray-50">
         <div className="container mx-auto px-3 sm:px-4 lg:px-6 text-center">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 max-w-3xl mx-auto leading-tight px-2">
-            🚀 Så enkelt får du ditt beviljade lån
+            Så enkelt får du ditt beviljade lån
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto">
             <div className="relative p-3 sm:p-4">
@@ -348,7 +358,7 @@ const Index = () => {
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 text-sm sm:text-lg font-bold">
                 2
               </div>
-              <h3 className="text-base sm:text-lg font-bold mb-2">Få ditt lånelöfte</h3>
+              <h3 className="text-base sm:text-lg font-bold mb-2">Få din preliminära bedömning</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
                 Direkt besked utan UC-kontroll eller krångel.
               </p>
@@ -373,7 +383,7 @@ const Index = () => {
             <CardContent className="p-4 sm:p-6 md:p-8">
               <ProgressSteps currentStep={currentStep} onBack={handleBack} />
               <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-4 sm:mb-6 leading-tight px-2">
-                💰 Snabbt lån utan krångel - Klart på minuter!
+                Snabbt lån utan krångel - Klart på minuter!
               </h2>
               <form onSubmit={handleFormSubmit} className="space-y-3 sm:space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -536,9 +546,16 @@ const Index = () => {
                   </p>
                 </div>
 
+                <div className="flex justify-center">
+                  <ReCAPTCHA
+                    sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                    onChange={setCaptchaValue}
+                  />
+                </div>
+
                 <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-xs sm:text-sm text-green-800">
                   <p className="leading-relaxed">
-                    <strong>🔒 Trygg hantering:</strong> Dina uppgifter behandlas enligt GDPR. 
+                    <strong>Trygg hantering:</strong> Dina uppgifter behandlas enligt GDPR. 
                     Ingen kreditupplysning görs.
                   </p>
                 </div>
@@ -555,7 +572,7 @@ const Index = () => {
                       BEARBETAR...
                     </>
                   ) : (
-                    "💰 Ta reda på hur mycket du kan låna NU."
+                    "Ta reda på hur mycket du kan låna NU"
                   )}
                 </Button>
               </form>
