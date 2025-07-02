@@ -24,7 +24,7 @@ const RotatingText = ({ className }: RotatingTextProps) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % phrases.length);
-    }, 2000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [phrases.length]);
